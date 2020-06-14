@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
-import CuriosityRover from "./components/CuriosityRover";
+import Curiosity from "./components/Curiosity";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CuriosityRover />
+    <Router>
+      <Curiosity />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
