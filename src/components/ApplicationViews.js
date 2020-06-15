@@ -1,17 +1,17 @@
 import { Route } from "react-router-dom";
 import React from "react";
-import Home from "./home/Home";
+import Login from "./Login";
 
 const ApplicationViews = () => {
   return (
     <>
-      <Route
+      {/* <Route
         exact
         path="/"
         render={(props) => {
-          return <Home />;
+          return <Login />;
         }}
-      />
+      /> */}
     </>
   );
 };
