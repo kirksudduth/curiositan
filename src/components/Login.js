@@ -10,8 +10,11 @@ import {
   Button,
   Message,
 } from "semantic-ui-react";
+import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
+  const setUser = props.setUser;
+  const hasUser = props.hasUser;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
@@ -37,14 +40,23 @@ const Login = (props) => {
                 icon="at"
                 iconPosition="left"
                 placeholder="Email"
+                id="email"
+                onChange={handleFieldChange}
               />
               <Form.Input
                 placeholder="Password"
                 icon="lock"
                 iconPosition="left"
                 type="password"
+                id="password"
+                onChange={handleFieldChange}
               />
-              <Button fluid color="blue" size="medium">
+              <Button
+                fluid
+                color="blue"
+                size="medium"
+                onClick={setUser(credentials)}
+              >
                 Login
               </Button>
             </Form>
