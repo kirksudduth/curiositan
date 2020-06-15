@@ -1,21 +1,59 @@
-import React from "react";
-import { Image } from "semantic-ui-react";
-// import keys from "../../keys"
+import React, { useState, useEffect } from "react";
+import {
+  Segment,
+  Image,
+  Header,
+  Form,
+  Grid,
+  Icon,
+  Input,
+  Button,
+  Message,
+} from "semantic-ui-react";
 
-const Login = () => {
-  // const Image = () => {
-  //   <Image src="https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02590/opgs/edr/fcam/FRB_627421745EDR_F0772254FHAZ00302M_.JPG"
-  //   size="medium" />
-  // }
+const Login = (props) => {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const handleFieldChange = (evt) => {
+    const stateToChange = { ...credentials };
+    stateToChange[evt.target.id] = evt.target.value;
+    setCredentials(stateToChange);
+  };
+
   return (
     <>
-      <div>MARS PIC</div>
-      <Image
-        // className="image"
-        src="https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02590/opgs/edr/fcam/FRB_627421745EDR_F0772254FHAZ00302M_.JPG"
-        size="small"
-        rounded
+      <Header
+        content="Red Planet: A Curiosity"
+        block
+        textAlign="center"
+        as="h1"
       />
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <Header content="Login" as="h2" textAlign="center" />
+          <Segment>
+            <Form size="large" className="loginForm">
+              <Form.Input
+                type="email"
+                icon="at"
+                iconPosition="left"
+                placeholder="Email"
+              />
+              <Form.Input
+                placeholder="Password"
+                icon="lock"
+                iconPosition="left"
+                type="password"
+              />
+              <Button fluid color="blue" size="medium">
+                Login
+              </Button>
+            </Form>
+          </Segment>
+          <Message>
+            Not registered yet? <a href="c">Sign Up</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
     </>
   );
 };
