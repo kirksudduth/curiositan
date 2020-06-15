@@ -1,16 +1,59 @@
-import React from "react";
-import { Image, Header } from "semantic-ui-react";
-// import keys from "../../keys"
+import React, { useState, useEffect } from "react";
+import {
+  Segment,
+  Image,
+  Header,
+  Form,
+  Grid,
+  Icon,
+  Input,
+  Button,
+  Message,
+} from "semantic-ui-react";
 
-const Login = () => {
+const Login = (props) => {
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const handleFieldChange = (evt) => {
+    const stateToChange = { ...credentials };
+    stateToChange[evt.target.id] = evt.target.value;
+    setCredentials(stateToChange);
+  };
+
   return (
     <>
       <Header
         content="Red Planet: A Curiosity"
         block
         textAlign="center"
-        as="h2"
+        as="h1"
       />
+      <Grid centered columns={2}>
+        <Grid.Column>
+          <Header content="Login" as="h2" textAlign="center" />
+          <Segment>
+            <Form size="large" className="loginForm">
+              <Form.Input
+                type="email"
+                icon="at"
+                iconPosition="left"
+                placeholder="Email"
+              />
+              <Form.Input
+                placeholder="Password"
+                icon="lock"
+                iconPosition="left"
+                type="password"
+              />
+              <Button fluid color="blue" size="medium">
+                Login
+              </Button>
+            </Form>
+          </Segment>
+          <Message>
+            Not registered yet? <a href="c">Sign Up</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
     </>
   );
 };
