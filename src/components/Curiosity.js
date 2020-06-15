@@ -1,5 +1,4 @@
 import React from "react";
-import "./CuriosityRover.css";
 import ApplicationViews from "./ApplicationViews";
 import Login from "./Login";
 
