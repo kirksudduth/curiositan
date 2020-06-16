@@ -21,10 +21,15 @@ const Curiosity = (props) => {
   };
   return (
     <>
-      <Container>
+      {/* <Container>
         <Login hasUser={hasUser} setUser={setUser} {...props} />
-      </Container>
-      <ApplicationViews />
+      </Container> */}
+      <ApplicationViews
+        clearUser={clearUser}
+        hasUser={hasUser}
+        setUser={setUser}
+        {...props}
+      />
     </>
   );
 };
