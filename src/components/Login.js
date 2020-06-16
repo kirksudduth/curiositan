@@ -11,6 +11,7 @@ import {
   Message,
   Popup,
   Checkbox,
+  Modal,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 
@@ -18,6 +19,7 @@ const Login = (props) => {
   const setUser = props.setUser;
   const hasUser = props.hasUser;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [error, setError] = useState({ error: false });
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
@@ -28,21 +30,26 @@ const Login = (props) => {
   const checkUser = (event) => {
     event.preventDefault();
     DataManager.getUserByEmail(credentials.email).then((user) => {
-      console.log("credentials", credentials);
-      console.log("user", user[0]);
-      if (
+      console.log(user[0]);
+      if (user[0] === undefined) {
+        window.alert("invalid email");
+      } else if (credentials.password !== user[0].password) {
+        window.alert("wrong password");
+      } else if (
         credentials.email === user[0].email &&
         credentials.password === user[0].password
       ) {
-        console.log("YOU IN, BEHBEH");
-      } else if (
-        credentials.email !== user[0].email ||
-        credentials.password !== user[0].password
-      ) {
         // return <Popup content="Incorrect Email or Password" />;
-        window.alert("Incorrect Email or Password");
+        // window.alert("Incorrect Email or Password");
+        handleLogin();
+        console.log("YOU IN, BEHBEH");
       }
     });
+  };
+
+  const handleLogin = () => {
+    setUser(credentials);
+    props.history.push("/photos_search");
   };
 
   return (
@@ -59,6 +66,7 @@ const Login = (props) => {
           <Segment>
             <Form onSubmit={checkUser} size="large" className="loginForm">
               <Form.Input
+                // error={}
                 type="email"
                 icon="at"
                 iconPosition="left"
@@ -83,7 +91,7 @@ const Login = (props) => {
             </Form>
           </Segment>
           <Message>
-            Not registered yet? <a href="c">Sign Up</a>
+            Not registered yet? <a href="/new_user">Sign Up</a>
           </Message>
         </Grid.Column>
       </Grid>
