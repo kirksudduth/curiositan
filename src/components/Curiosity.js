@@ -21,9 +21,6 @@ const Curiosity = (props) => {
   };
   return (
     <>
-      {/* <Container>
-        <Login hasUser={hasUser} setUser={setUser} {...props} />
-      </Container> */}
       <ApplicationViews
         clearUser={clearUser}
         hasUser={hasUser}

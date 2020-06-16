@@ -16,10 +16,10 @@ import {
 import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
-  console.log(props);
   const setUser = props.setUser;
   const hasUser = props.hasUser;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [error, setError] = useState({ error: false });
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
@@ -34,7 +34,6 @@ const Login = (props) => {
       if (user[0] === undefined) {
         window.alert("invalid email");
       } else if (credentials.password !== user[0].password) {
-        // return <Message error header="You fucked up." content="Really bad." />;
         window.alert("wrong password");
       } else if (
         credentials.email === user[0].email &&
@@ -67,6 +66,7 @@ const Login = (props) => {
           <Segment>
             <Form onSubmit={checkUser} size="large" className="loginForm">
               <Form.Input
+                // error={}
                 type="email"
                 icon="at"
                 iconPosition="left"
