@@ -4,16 +4,13 @@ import { withRouter, NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
   const clearUser = props.clearUser;
-  console.log(props);
-  const [activeItem, setActiveItem] = useState({ activeItem: "search" });
+  const [activeItem, setActiveItem] = useState({ name: "image" });
+
   const handleClickEvent = (evt) => {
-    debugger;
     evt.persist();
-    console.log(evt.target.classList[0]);
     const stateToChange = { ...activeItem };
-    stateToChange[activeItem] = evt.target.classList[0];
+    stateToChange.name = evt.target.classList[0];
     setActiveItem(stateToChange);
-    console.log(activeItem);
   };
 
   return (
@@ -24,20 +21,20 @@ const NavBar = (props) => {
         textAlign="center"
         as="h1"
       />
-      <Menu pointing secondary icon="labeled">
+      <Menu secondary pointing icon="labeled">
         <Menu.Item
           className="search"
           name="search"
-          active={activeItem === "search"}
+          active={activeItem.name === "search"}
           onClick={handleClickEvent}
         >
-          <Icon name="search" />
+          <Icon name="search" onClick={handleClickEvent} />
           Photo Search
         </Menu.Item>
         <Menu.Item
           name="image"
           className="image"
-          active={activeItem.activeItem === "image"}
+          active={activeItem.name === "image"}
           onClick={handleClickEvent}
         >
           <Icon name="image outline" />
@@ -46,7 +43,7 @@ const NavBar = (props) => {
         <Menu.Item
           name="users"
           className="users"
-          active={activeItem.activeItem === "users"}
+          active={activeItem.name === "users"}
           onClick={handleClickEvent}
         >
           <Icon name="users" />
@@ -55,7 +52,7 @@ const NavBar = (props) => {
         <Menu.Item
           name="envelope"
           className="envelope"
-          active={activeItem.activeItem === "envelope"}
+          active={activeItem.name === "envelope"}
           onClick={handleClickEvent}
         >
           <Icon name="envelope outline" />
