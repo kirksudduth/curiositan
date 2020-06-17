@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Menu, Header, Button, Icon, Container } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Menu, Header, Icon, Segment } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -21,7 +21,7 @@ const NavBar = (props) => {
         textAlign="center"
         as="h1"
       />
-      <Menu secondary pointing icon="labeled">
+      <Menu tabular attached="top" icon="labeled">
         <Menu.Item
           className="search"
           name="search"
@@ -65,6 +65,7 @@ const NavBar = (props) => {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
+      <Segment attached="bottom"></Segment>
     </>
   );
 };
