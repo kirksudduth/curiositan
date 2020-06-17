@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import "../Curiosity.css";
 import ApplicationViews from "./ApplicationViews";
+import NavBar from "./NavBar";
 import Login from "./Login";
 
 const Curiosity = (props) => {
@@ -18,9 +19,11 @@ const Curiosity = (props) => {
   const clearUser = () => {
     sessionStorage.clear();
     setHasUser(isAuthenticated());
+    props.history.push("/");
   };
   return (
     <>
+      {hasUser ? <NavBar {...props} clearUser={clearUser} /> : null}
       <ApplicationViews
         clearUser={clearUser}
         hasUser={hasUser}
