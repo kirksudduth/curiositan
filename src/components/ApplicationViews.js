@@ -8,7 +8,6 @@ import DataManager from "../modules/DataManager";
 const ApplicationViews = (props) => {
   const setUser = props.setUser;
   const hasUser = props.hasUser;
-  const clearUser = props.clearUser;
 
   const [newUser, setNewUser] = useState({
     username: "",
@@ -27,7 +26,7 @@ const ApplicationViews = (props) => {
     props.history.push("/photos_search");
   };
 
-  // ******NEW USER STATE STUFF******
+  // ******  NEW USER STATE STUFF  ******
 
   const handleNewUserFieldChange = (evt) => {
     const stateToChange = { ...newUser };
@@ -46,6 +45,8 @@ const ApplicationViews = (props) => {
     setUser(credentials);
     props.history.push("/photos_search");
   };
+
+  // ******  END NEW USER STATE STUFF  ******
 
   return (
     <>

@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Segment,
-  Image,
   Header,
   Form,
   Grid,
-  Icon,
-  Input,
-  Button,
   Message,
-  Popup,
   Checkbox,
-  Modal,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 
