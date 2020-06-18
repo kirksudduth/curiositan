@@ -66,7 +66,6 @@ const Login = (props) => {
           <Segment>
             <Form onSubmit={checkUser} size="large" className="loginForm">
               <Form.Input
-                // error={}
                 type="email"
                 icon="at"
                 iconPosition="left"

@@ -11,15 +11,6 @@ const NavBar = (props) => {
     const stateToChange = { ...activeItem };
     stateToChange.name = evt.target.classList[0];
     setActiveItem(stateToChange);
-    if (activeItem.name === "search") {
-      props.history.push("/photos_search");
-    } else if (activeItem.name === "image") {
-      props.history.push("/saved_photos");
-    } else if (activeItem.name === "users") {
-      props.history.push("/curiositans");
-    } else if (activeItem.name === "envelope") {
-      props.history.push("/messages");
-    }
   };
 
   return (
@@ -30,13 +21,12 @@ const NavBar = (props) => {
         textAlign="center"
         as="h1"
       />
-      <Menu tabular attached="top" icon="labeled">
+      <Menu color="brown" secondary pointing icon="labeled">
         <NavLink to="/photos_search">
           <Menu.Item
             className="search"
             name="search"
             active={activeItem.name === "search"}
-            //   onClick={handleClickEvent}
           >
             <Icon name="search" onClick={handleClickEvent} />
             Photo Search
@@ -47,7 +37,6 @@ const NavBar = (props) => {
             name="image"
             className="image"
             active={activeItem.name === "image"}
-            //   onClick={handleClickEvent}
           >
             <Icon name="image outline" onClick={handleClickEvent} />
             Saved Photos
@@ -58,7 +47,6 @@ const NavBar = (props) => {
             name="users"
             className="users"
             active={activeItem.name === "users"}
-            //   onClick={handleClickEvent}
           >
             <Icon name="users" onClick={handleClickEvent} />
             Curiositans
@@ -69,7 +57,6 @@ const NavBar = (props) => {
             name="envelope"
             className="envelope"
             active={activeItem.name === "envelope"}
-            //   onClick={handleClickEvent}
           >
             <Icon name="envelope outline" onClick={handleClickEvent} />
             Messages
@@ -86,4 +73,4 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
