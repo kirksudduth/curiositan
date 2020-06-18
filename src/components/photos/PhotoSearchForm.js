@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Message,
   Header,
@@ -7,9 +7,23 @@ import {
   Grid,
   Button,
 } from "semantic-ui-react";
+import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
-  console.log(props);
+  const [date, setDate] = useState({ date: "" });
+
+  const handleFieldChange = (evt) => {
+    evt.persist();
+    const stateToChange = { ...date };
+    stateToChange.date = evt.target.value;
+    setDate(stateToChange);
+    DataManager.getManifest(stateToChange);
+  };
+  //   const getManifest = () => {
+  //     DataManager.getManifest().then((obj) =>
+  //       console.log(obj.photo_manifest.photos[3])
+  //     );
+  //   };
   return (
     <>
       <Grid columns={2} centered>
@@ -25,7 +39,7 @@ const PhotoSearchForm = (props) => {
                 control="input"
                 type="date"
                 min="2012-08-06"
-                // onChange={handleFieldChange}
+                onChange={handleFieldChange}
               />
               <Form.Group grouped>
                 <label>Camera Type:</label>
