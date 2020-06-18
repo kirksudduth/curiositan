@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import React, { useState } from "react";
 import Login from "./Login";
 import NewUser from "./NewUser";
+import PhotoSearchForm from "../components/photos/PhotoSearchForm";
 
 const ApplicationViews = (props) => {
   const setUser = props.setUser;
@@ -36,6 +37,13 @@ const ApplicationViews = (props) => {
         path="/"
         render={(props) => {
           return <Login setUser={setUser} hasUser={hasUser} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/photos_search"
+        render={(props) => {
+          return <PhotoSearchForm {...props} />;
         }}
       />
     </>
