@@ -11,40 +11,38 @@ import DataManager from "../modules/DataManager";
 
 const NewUser = (props) => {
   console.log(props);
+  const credentials = props.credentials;
   const setUser = props.setUser;
-  const [newUser, setNewUser] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  const newUser = props.newUser;
+  const handleNewUserFieldChange = props.handleNewUserFieldChange;
+  const handleNewUserLogin = props.handleNewUserLogin;
+  //   const [newUser, setNewUser] = useState({
+  //     username: "",
+  //     email: "",
+  //     password: "",
+  //   });
+  //   const [credentials, setCredentials] = useState({
+  //     email: "",
+  //     password: "",
+  //   });
 
-  const handleFieldChange = (evt) => {
-    const stateToChange = { ...credentials };
-    stateToChange[evt.target.id] = evt.target.value;
-    setCredentials(stateToChange);
-  };
+  //   const handleNewUserFieldChange = (evt) => {
+  //     const stateToChange = { ...newUser };
+  //     const otherStateToChange = { ...credentials };
+  //     otherStateToChange[evt.target.id] = evt.target.value;
+  //     stateToChange[evt.target.id] = evt.target.value;
+  //     setNewUser(stateToChange);
+  //     setCredentials(otherStateToChange);
+  //   };
 
-  const handleNewUserFieldChange = (evt) => {
-    const stateToChange = { ...newUser };
-    const otherStateToChange = { ...credentials };
-    otherStateToChange[evt.target.id] = evt.target.value;
-    stateToChange[evt.target.id] = evt.target.value;
-    setNewUser(stateToChange);
-    setCredentials(otherStateToChange);
-  };
-
-  const handleNewUserLogin = () => {
-    console.log("newUser", newUser);
-    console.log("credentials", credentials);
-    setNewUser();
-    DataManager.addNewUser(newUser);
-    setUser(credentials);
-    props.history.push("/photos_search");
-  };
+  //   const handleNewUserLogin = () => {
+  //     console.log("newUser", newUser);
+  //     console.log("credentials", credentials);
+  //     setNewUser();
+  //     DataManager.addNewUser(newUser);
+  //     setUser(credentials);
+  //     props.history.push("/photos_search");
+  //   };
 
   return (
     <>

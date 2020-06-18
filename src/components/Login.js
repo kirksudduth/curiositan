@@ -16,21 +16,14 @@ import {
 import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
+  console.log(props);
+  const credentials = props.credentials;
+  const handleFieldChange = props.handleFieldChange;
   const setUser = props.setUser;
-  const hasUser = props.hasUser;
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [error, setError] = useState({ error: false });
-
-  const handleFieldChange = (evt) => {
-    const stateToChange = { ...credentials };
-    stateToChange[evt.target.id] = evt.target.value;
-    setCredentials(stateToChange);
-  };
 
   const checkUser = (event) => {
     event.preventDefault();
     DataManager.getUserByEmail(credentials.email).then((user) => {
-      console.log(user[0]);
       if (user[0] === undefined) {
         window.alert("invalid email");
       } else if (credentials.password !== user[0].password) {
@@ -39,10 +32,7 @@ const Login = (props) => {
         credentials.email === user[0].email &&
         credentials.password === user[0].password
       ) {
-        // return <Popup content="Incorrect Email or Password" />;
-        // window.alert("Incorrect Email or Password");
         handleLogin();
-        console.log("YOU IN, BEHBEH");
       }
     });
   };

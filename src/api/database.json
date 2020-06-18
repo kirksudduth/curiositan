@@ -17,6 +17,12 @@
       "email": "1@1.com",
       "password": "1",
       "id": 3
+    },
+    {
+      "username": "1",
+      "email": "1@2.com",
+      "password": "1",
+      "id": 4
     }
   ]
 }
