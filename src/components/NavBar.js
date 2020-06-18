@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Header, Icon, Segment } from "semantic-ui-react";
+import { Menu, Header, Icon } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
 
 const NavBar = (props) => {

@@ -6,6 +6,7 @@ import {
   Grid,
   Message,
   Checkbox,
+  Button,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 
