@@ -13,7 +13,7 @@ export default {
       .then((manifest) => {
         const dateArray = manifest.photo_manifest.photos;
         const foundDate = dateArray.find((obj) => obj.earth_date === date.date);
-        console.log("foundDate: ", foundDate);
+        return foundDate;
       });
   },
   getDate(date) {
