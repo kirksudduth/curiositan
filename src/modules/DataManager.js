@@ -12,7 +12,6 @@ export default {
       .then((result) => result.json())
       .then((manifest) => {
         const dateArray = manifest.photo_manifest.photos;
-        console.log(date);
         const foundDate = dateArray.find((obj) => obj.earth_date === date.date);
         return foundDate;
       });

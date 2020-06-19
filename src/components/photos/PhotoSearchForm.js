@@ -10,32 +10,32 @@ import {
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
-  const [date, setDate] = useState({ date: "2012-08-06" });
+  const [date, setDate] = useState({ date: "" });
   const [cameras, setCameras] = useState([]);
+  const [camValue, setCamValue] = useState({ value: "" });
 
   const handleFieldChange = (evt) => {
     evt.persist();
     const stateToChange = { ...date };
     stateToChange.date = evt.target.value;
     setDate(stateToChange);
-    // console.log(stateToChange);
   };
+
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
       const camerasArray = obj.cameras;
       setCameras(camerasArray);
     });
   };
-  useEffect(() => {
-    getCameras(date);
-  }, [date]);
-  console.log("Cameras: ", cameras);
-  console.log("date: ", date);
-  //   const getManifest = () => {
-  //     DataManager.getManifest().then((obj) =>
-  //       console.log(obj.photo_manifest.photos[3])
-  //     );
-  //   };
+
+  const handleRadioChange = (evt) => {
+    evt.persist();
+    const stateToChange = { ...camValue };
+    stateToChange.value = evt.target.innerText;
+    setCamValue(stateToChange);
+    console.log(stateToChange);
+  };
+  console.log(camValue);
   return (
     <>
       <Grid columns={2} centered>
@@ -54,12 +54,20 @@ const PhotoSearchForm = (props) => {
                 min="2012-08-06"
                 onChange={handleFieldChange}
               />
-              {/* <Button size="tiny" onClick={handleFieldChange} value="date">
+              <Button size="tiny" onClick={() => getCameras(date)} value="date">
                 Get Cameras
-              </Button> */}
+              </Button>
               <Form.Group grouped>
                 <label>Camera Type:</label>
-                {/* {getManifest(date)} */}
+                {cameras.map((camera) => (
+                  <Form.Radio
+                    key={camera}
+                    label={camera}
+                    value={camera}
+                    checked={camValue.value === `${camera}`}
+                    onChange={handleRadioChange}
+                  />
+                ))}
               </Form.Group>
               <Button type="submit" fluid>
                 Search
