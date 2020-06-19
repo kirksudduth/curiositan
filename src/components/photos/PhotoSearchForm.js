@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
+import PhotoSearchList from "../photos/PhotoSearchList";
 import {
   Message,
   Header,
@@ -10,16 +12,21 @@ import {
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
-  const [date, setDate] = useState({ date: "" });
+  const handleRadioChange = props.handleRadioChange;
+  const handleDateFieldChange = props.handleDateFieldChange;
+  const date = props.date;
+  const camValue = props.camera;
+  //   const [date, setDate] = useState({ date: "" });
   const [cameras, setCameras] = useState([]);
-  const [camValue, setCamValue] = useState({ value: "" });
+  console.log(props);
+  //   const [camValue, setCamValue] = useState({ value: "" });
 
-  const handleFieldChange = (evt) => {
-    evt.persist();
-    const stateToChange = { ...date };
-    stateToChange.date = evt.target.value;
-    setDate(stateToChange);
-  };
+  //   const handleDateFieldChange = (evt) => {
+  //     evt.persist();
+  //     const stateToChange = { ...date };
+  //     stateToChange.date = evt.target.value;
+  //     setDate(stateToChange);
+  //   };
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
@@ -28,14 +35,13 @@ const PhotoSearchForm = (props) => {
     });
   };
 
-  const handleRadioChange = (evt) => {
-    evt.persist();
-    const stateToChange = { ...camValue };
-    stateToChange.value = evt.target.innerText;
-    setCamValue(stateToChange);
-    console.log(stateToChange);
-  };
-  console.log(camValue);
+  //   const handleRadioChange = (evt) => {
+  //     evt.persist();
+  //     const stateToChange = { ...camValue };
+  //     stateToChange.value = evt.target.innerText;
+  //     setCamValue(stateToChange);
+  //   };
+
   return (
     <>
       <Grid columns={2} centered>
@@ -52,11 +58,17 @@ const PhotoSearchForm = (props) => {
                 id="date"
                 type="date"
                 min="2012-08-06"
-                onChange={handleFieldChange}
+                onChange={handleDateFieldChange}
               />
-              <Button size="tiny" onClick={() => getCameras(date)} value="date">
-                Get Cameras
-              </Button>
+              <Form.Field>
+                <Button
+                  size="tiny"
+                  onClick={() => getCameras(date)}
+                  value="date"
+                >
+                  Get Cameras
+                </Button>
+              </Form.Field>
               <Form.Group grouped>
                 <label>Camera Type:</label>
                 {cameras.map((camera) => (
@@ -69,14 +81,12 @@ const PhotoSearchForm = (props) => {
                   />
                 ))}
               </Form.Group>
-              <Button type="submit" fluid>
+              <Button
+                onClick={() => props.history.push("/photos_search_list")}
+                fluid
+              >
                 Search
               </Button>
-              {/* <Form.Field
-                label="Camera Type:"
-                control="select"
-                options={"yes"}
-              ></Form.Field> */}
             </Form>
           </Segment>
           <Message>
