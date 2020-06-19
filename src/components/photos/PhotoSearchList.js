@@ -1,13 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Grid, Button } from "semantic-ui-react";
+import DataManager from "../../modules/DataManager";
+import PhotoSearchForm from "../photos/PhotoSearchForm";
 
 const PhotoSearchList = (props) => {
-  const camera = props.camera;
-  const date = props.date;
-  console.log(props);
+  const [date, setDate] = useState({ date: "" });
+  const [camValue, setCamValue] = useState({ value: "" });
+
+  // const camera = props.camera.value;
+  // const date = props.date.date;
+  // console.log("camera: ", camera);
+  // console.log("date: ", date);
+  // console.log(props);
+  const [roverPhotos, setRoverPhotos] = useState([]);
+
+  const getRoverPhotos = (date, camera) => {
+    DataManager.getRoverPhotos(date, camera).then((photosArray) =>
+      setRoverPhotos(photosArray)
+    );
+  };
+  const handleDateFieldChange = (evt) => {
+    evt.persist();
+    const stateToChange = { ...date };
+    stateToChange.date = evt.target.value;
+    setDate(stateToChange);
+  };
+  const handleRadioChange = (evt) => {
+    evt.persist();
+    const stateToChange = { ...camValue };
+    stateToChange.value = evt.target.innerText;
+    setCamValue(stateToChange);
+  };
+  console.log("photoArray:", roverPhotos);
+  // useEffect(() => {
+  //   getRoverPhotos(date, camera);
+  // }, []);
 
   return (
     <>
-      <h1>SUP</h1>
+      <Grid celled>
+        <Grid.Row>
+          <PhotoSearchForm
+            handleRadioChange={handleRadioChange}
+            handleDateFieldChange={handleDateFieldChange}
+            getRoverPhotos={getRoverPhotos}
+            date={date}
+            camera={camValue}
+            roverPhotos={roverPhotos}
+          />
+        </Grid.Row>
+      </Grid>
     </>
   );
 };
