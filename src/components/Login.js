@@ -12,29 +12,35 @@ import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
   console.log(props);
+  const handleLogin = props.handleLogin;
   const credentials = props.credentials;
   const handleFieldChange = props.handleFieldChange;
   const setUser = props.setUser;
+  const userLogin = props.userLogin;
+  const setCredentials = props.setCredentials;
+
+  const setUpCredentials = (user) => {
+    const stateToChange = { ...credentials };
+    stateToChange.username = user[0].username;
+    stateToChange.id = user[0].id;
+    setCredentials(stateToChange);
+  };
 
   const checkUser = (event) => {
     event.preventDefault();
-    DataManager.getUserByEmail(credentials.email).then((user) => {
+    DataManager.getUserByEmail(userLogin.email).then((user) => {
       if (user[0] === undefined) {
         window.alert("invalid email");
-      } else if (credentials.password !== user[0].password) {
+      } else if (userLogin.password !== user[0].password) {
         window.alert("wrong password");
       } else if (
-        credentials.email === user[0].email &&
-        credentials.password === user[0].password
+        userLogin.email === user[0].email &&
+        userLogin.password === user[0].password
       ) {
+        setUpCredentials(user);
         handleLogin();
       }
     });
-  };
-
-  const handleLogin = () => {
-    setUser(credentials);
-    props.history.push("/photos_search");
   };
 
   return (

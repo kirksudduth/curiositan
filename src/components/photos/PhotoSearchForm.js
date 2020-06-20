@@ -8,6 +8,7 @@ import {
   Card,
   Image,
   Icon,
+  Modal,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
@@ -19,7 +20,15 @@ const PhotoSearchForm = (props) => {
   const date = props.date;
   const camValue = props.camera;
   const [cameras, setCameras] = useState([]);
-  console.log(roverPhotos);
+
+  const modalsRule = (obj) => (
+    <Modal trigger={<Icon name="eye" />} closeIcon>
+      <Header content="Big Pic" />
+      <Modal.Content>
+        <Image size="huge" src={obj.img_src} />
+      </Modal.Content>
+    </Modal>
+  );
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
@@ -30,7 +39,7 @@ const PhotoSearchForm = (props) => {
 
   return (
     <>
-      <Grid verticalAlign="middle" horizontalAlign="middle">
+      <Grid verticalAlign="middle">
         <Grid.Column width={4}>
           <Header
             textAlign="center"
@@ -94,7 +103,7 @@ const PhotoSearchForm = (props) => {
           </Form>
         </Grid.Column>
         <Grid.Column width={4}>
-          <Message>
+          <Message style={{ align: "center" }}>
             Want to see the latest photos Curiosity has taken?{" "}
             <a href="/latest_photos">Click Here!</a>
           </Message>
@@ -103,14 +112,14 @@ const PhotoSearchForm = (props) => {
           {!roverPhotos
             ? []
             : roverPhotos.map((photo) => (
-                <Grid.Column width={4}>
-                  <Card key={photo.id}>
+                <Grid.Column key={photo.id} width={4}>
+                  <Card style={{ marginBottom: 5 }} raised key={photo.id}>
                     <Card.Content>
-                      <Image size="small" src={photo.img_src} />
+                      <Image size="tiny" floated="right" src={photo.img_src} />
+                      <Card.Meta>Camera: {photo.camera.full_name}</Card.Meta>
+                      <Card.Meta>Date: {photo.earth_date}</Card.Meta>
                     </Card.Content>
-                    <Card.Content extra>
-                      <Icon floated="right" />
-                    </Card.Content>
+                    <Card.Content extra>{modalsRule(photo)}</Card.Content>
                   </Card>
                 </Grid.Column>
               ))}

@@ -8,24 +8,9 @@ import DataManager from "../modules/DataManager";
 const ApplicationViews = (props) => {
   const setUser = props.setUser;
   const hasUser = props.hasUser;
-
-  // 88888888888 Login Stuff 88888888888888
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleFieldChange = (evt) => {
-    const stateToChange = { ...credentials };
-    stateToChange[evt.target.id] = evt.target.value;
-    setCredentials(stateToChange);
-  };
-
-  const handleLogin = () => {
-    setUser(credentials);
-    props.history.push("/photos_search");
-  };
-  // 88888888888 End Login Stuff 8888888888888
+  const credentials = props.credentials;
+  const handleLogin = props.handleLogin;
+  const setCredentials = props.setCredentials;
   // =====================================================
   // ******  NEW USER STATE STUFF  ******
   const [newUser, setNewUser] = useState({
@@ -70,13 +55,14 @@ const ApplicationViews = (props) => {
           );
         }}
       />
-      <Route
+      {/* <Route
         exact
         path="/"
         render={(props) => {
           return (
             <Login
               credentials={credentials}
+              userLogin={userLogin}
               handleFieldChange={handleFieldChange}
               setUser={setUser}
               hasUser={hasUser}
@@ -84,7 +70,7 @@ const ApplicationViews = (props) => {
             />
           );
         }}
-      />
+      /> */}
       <Route
         exact
         path="/photos_search"
