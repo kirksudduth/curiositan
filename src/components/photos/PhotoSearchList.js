@@ -7,11 +7,6 @@ const PhotoSearchList = (props) => {
   const [date, setDate] = useState({ date: "" });
   const [camValue, setCamValue] = useState({ value: "" });
 
-  // const camera = props.camera.value;
-  // const date = props.date.date;
-  // console.log("camera: ", camera);
-  // console.log("date: ", date);
-  // console.log(props);
   const [roverPhotos, setRoverPhotos] = useState([]);
 
   const getRoverPhotos = (date, camera) => {
@@ -31,7 +26,6 @@ const PhotoSearchList = (props) => {
     stateToChange.value = evt.target.innerText;
     setCamValue(stateToChange);
   };
-  console.log("photoArray:", roverPhotos);
   // useEffect(() => {
   //   getRoverPhotos(date, camera);
   // }, []);
