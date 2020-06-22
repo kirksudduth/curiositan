@@ -3,6 +3,9 @@
 # API keys
 keys.js
 
+# local DB
+database.json
+
 # dependencies
 /node_modules
 /.pnp
