@@ -38,7 +38,8 @@ const PhotoSearchForm = (props) => {
     stateToChange.url = obj.img_src;
     setSavedPhoto(stateToChange);
     debugger;
-    DataManager.postSavedPhoto(stateToChange).then(handleClose);
+    DataManager.postSavedPhoto(stateToChange);
+    // .then(handleClose);
   };
 
   const handleFieldChange = (evt) => {
@@ -48,21 +49,29 @@ const PhotoSearchForm = (props) => {
     setSavedPhoto(stateToChange);
   };
 
-  const [modalWindow, setModalWindow] = useState({ open: false });
-  const handleOpen = () => {
-    const stateToChange = { ...modalWindow };
-    stateToChange.open = true;
-    setModalWindow(stateToChange);
-  };
+  // const [modalWindow, setModalWindow] = useState({ open: false });
+  // const handleOpen = () => {
+  //   const stateToChange = { ...modalWindow };
+  //   stateToChange.open = true;
+  //   setModalWindow(stateToChange);
+  // };
 
-  const handleClose = () => {
-    const stateToChange = { ...modalWindow };
-    stateToChange.open = false;
-    setModalWindow(stateToChange);
-  };
+  // const handleClose = () => {
+  //   const stateToChange = { ...modalWindow };
+  //   stateToChange.open = false;
+  //   setModalWindow(stateToChange);
+  // };
 
   const modalsRule = (obj) => (
-    <Modal trigger={<Icon onClick={handleOpen} name="eye" />} closeIcon>
+    <Modal
+      trigger={
+        <Icon
+          // onClick={handleOpen}
+          name="eye"
+        />
+      }
+      closeIcon
+    >
       <Header content="BIG  PHOTO" />
       <Modal.Content>
         <Image size="large" src={obj.img_src} />

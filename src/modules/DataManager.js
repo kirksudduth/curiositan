@@ -44,4 +44,9 @@ export default {
       body: JSON.stringify(photo),
     }).then((data) => data.json());
   },
+  getSavedPhotos(userId) {
+    return fetch(`${localURL}/users/${userId}?_embed=photos`).then((data) =>
+      data.json()
+    );
+  },
 };
