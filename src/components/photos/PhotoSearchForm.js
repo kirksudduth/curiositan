@@ -25,31 +25,21 @@ const PhotoSearchForm = (props) => {
   const [savedPhoto, setSavedPhoto] = useState({
     userId: "",
     comment: "",
-    date: "",
-    camera: "",
+    date: date.date,
+    camera: camValue.value,
   });
-  // const createPhotoObj = (obj) => {
-  //   const comment = document.querySelector("#comment").value;
-  //   return {
-  //     userId: 2,
-  //     comment: comment,
-  //     date: obj.earth_date,
-  //     camera: obj.camera.full_name,
-  //   };
-  // };
 
-  // const yellow = () => {
-  //   console.log("yellow");
-  // };
-
-  const makePhotoWithComment = (evt, obj) => {
+  const makePhotoWithComment = (obj) => {
     const stateToChange = { ...savedPhoto };
     // evt.persist();
+    console.log(obj);
+    debugger;
     stateToChange.date = obj.earth_date;
-    stateToChange.camera = obj.camera;
+    stateToChange.camera = obj.camera.name;
     stateToChange.userId = 1;
     setSavedPhoto(stateToChange);
-    handleFieldChange(evt);
+    DataManager.postSavedPhoto(stateToChange);
+    // handleFieldChange(evt);
   };
 
   const handleFieldChange = (evt) => {
@@ -75,13 +65,13 @@ const PhotoSearchForm = (props) => {
             label="Comment: "
             id="comment"
             fluid
-            onChange={makePhotoWithComment}
+            onChange={handleFieldChange}
             type="text area"
             style={{ marginBottom: 10 }}
           />
           <Button
             icon="save outline"
-            onClick={() => postSavedPhoto(savedPhoto)}
+            onClick={() => makePhotoWithComment(obj)}
             content="Save Photo"
           />
         </Form>
