@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import { Container } from "semantic-ui-react";
 import "../Curiosity.css";
 import ApplicationViews from "./ApplicationViews";
 import NavBar from "./NavBar";

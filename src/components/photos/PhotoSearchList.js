@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Grid, Button } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Grid } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 import PhotoSearchForm from "../photos/PhotoSearchForm";
 

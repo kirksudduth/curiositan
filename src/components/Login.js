@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import {
   Segment,
   Header,
@@ -11,19 +12,21 @@ import {
 import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
-  console.log(props);
-  const handleLogin = props.handleLogin;
-  const credentials = props.credentials;
   const handleFieldChange = props.handleFieldChange;
   const setUser = props.setUser;
   const userLogin = props.userLogin;
-  const setCredentials = props.setCredentials;
 
+  const [credentials, setCredentials] = useState({ username: "", id: "" });
   const setUpCredentials = (user) => {
     const stateToChange = { ...credentials };
     stateToChange.username = user[0].username;
     stateToChange.id = user[0].id;
     setCredentials(stateToChange);
+  };
+
+  const handleLogin = () => {
+    setUser(credentials);
+    props.history.push("/photos_search");
   };
 
   const checkUser = (event) => {
@@ -38,7 +41,10 @@ const Login = (props) => {
         userLogin.password === user[0].password
       ) {
         setUpCredentials(user);
+        debugger;
         handleLogin();
+        console.log("credentials: ", credentials);
+        console.log("sessionStorage: ", sessionStorage);
       }
     });
   };
@@ -89,4 +95,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
