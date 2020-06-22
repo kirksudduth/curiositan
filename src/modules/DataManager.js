@@ -49,4 +49,13 @@ export default {
       data.json()
     );
   },
+  putEditedPhoto(editedPhoto) {
+    return fetch(`${localURL}/photos/${editedPhoto.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedPhoto),
+    }).then((data) => data.json());
+  },
 };
