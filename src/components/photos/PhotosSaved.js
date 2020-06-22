@@ -23,7 +23,7 @@ const PhotosSaved = () => {
     date: "",
     id: "",
   });
-  const userId = 1;
+  const userId = JSON.parse(sessionStorage.credentials);
   const putEditedPhoto = DataManager.putEditedPhoto;
 
   const handleFieldChange = (evt) => {
@@ -49,7 +49,6 @@ const PhotosSaved = () => {
             id="comment"
             fluid
             onChange={handleFieldChange}
-            // value={obj.comment}
             placeholder={obj.comment}
             type="text area"
             style={{ marginBottom: 10 }}
@@ -87,7 +86,7 @@ const PhotosSaved = () => {
     const stateToChange = { ...editedPhoto };
     stateToChange.date = obj.date;
     stateToChange.camera = obj.camera;
-    stateToChange.userId = 1;
+    stateToChange.userId = userId;
     stateToChange.url = obj.url;
     stateToChange.id = obj.id;
     setEditedPhoto(stateToChange);

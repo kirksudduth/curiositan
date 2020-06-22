@@ -12,35 +12,42 @@ import {
 import DataManager from "../modules/DataManager";
 
 const Login = (props) => {
-  const handleFieldChange = props.handleFieldChange;
   const setUser = props.setUser;
-  const userLogin = props.userLogin;
 
-  const [credentials, setCredentials] = useState({ username: "", id: "" });
-  const setUpCredentials = (user) => {
+  const [credentials, setCredentials] = useState({});
+  // const setUpCredentials = (user) => {
+  //   const stateToChange = { ...credentials };
+  //   stateToChange.username = user[0].username;
+  //   stateToChange.id = user[0].id;
+  //   setCredentials(stateToChange);
+  // };
+
+  const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
-    stateToChange.username = user[0].username;
-    stateToChange.id = user[0].id;
+    stateToChange[evt.target.id] = evt.target.value;
     setCredentials(stateToChange);
   };
 
   const handleLogin = () => {
-    setUser(credentials);
+    setUser(credentials.id);
     props.history.push("/photos_search");
   };
 
   const checkUser = (event) => {
     event.preventDefault();
-    DataManager.getUserByEmail(userLogin.email).then((user) => {
+    DataManager.getUserByEmail(credentials.email).then((user) => {
       if (user[0] === undefined) {
         window.alert("invalid email");
-      } else if (userLogin.password !== user[0].password) {
+      } else if (credentials.password !== user[0].password) {
         window.alert("wrong password");
       } else if (
-        userLogin.email === user[0].email &&
-        userLogin.password === user[0].password
+        credentials.email === user[0].email &&
+        credentials.password === user[0].password
       ) {
-        setUpCredentials(user);
+        credentials.id = user[0].id;
+        credentials.username = user[0].username;
+        console.log(credentials.id, credentials.username);
+        // setUpCredentials(user);
         handleLogin();
         console.log("credentials: ", credentials);
         console.log("sessionStorage: ", sessionStorage);

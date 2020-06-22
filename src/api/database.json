@@ -27,7 +27,7 @@
   ],
   "photos": [
     {
-      "comment": "I LOVE CURIOSITY",
+      "comment": "Curiosity is so cool",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/ncam/NRB_644459716EDR_F0792640NCAM00117M_.JPG",
       "userId": 1,
       "camera": "NAVCAM",
@@ -57,6 +57,22 @@
       "camera": "FHAZ",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/fcam/FRB_644459613EDR_F0792640FHAZ00341M_.JPG",
       "id": 4
+    },
+    {
+      "comment": "RocketMars",
+      "url": "https://mars.nasa.gov/msl-raw-images/msss/02578/mcam/2578ML0135440060506323C00_DXXX.jpg",
+      "userId": 2,
+      "camera": "MAST",
+      "date": "2019-11-06",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "comment": "Curiosity gettin it",
+      "date": "2019-11-06",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02578/opgs/edr/ncam/NRB_626356326EDR_F0771560CCAM02577M_.JPG",
+      "id": 6
     }
   ]
 }

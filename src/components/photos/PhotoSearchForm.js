@@ -29,12 +29,13 @@ const PhotoSearchForm = (props) => {
     camera: "",
     url: "",
   });
+  const userId = JSON.parse(sessionStorage.credentials);
 
   const makePhotoWithComment = (obj) => {
     const stateToChange = { ...savedPhoto };
     stateToChange.date = obj.earth_date;
     stateToChange.camera = obj.camera.name;
-    stateToChange.userId = 1;
+    stateToChange.userId = userId;
     stateToChange.url = obj.img_src;
     setSavedPhoto(stateToChange);
     debugger;
