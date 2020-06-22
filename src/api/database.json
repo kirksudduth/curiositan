@@ -27,11 +27,11 @@
   ],
   "photos": [
     {
-      "userId": 1,
-      "comment": "Curiosity!",
-      "date": "2020-06-03",
-      "camera": "NAVCAM",
+      "comment": "I LOVE CURIOSITY",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/ncam/NRB_644459716EDR_F0792640NCAM00117M_.JPG",
+      "userId": 1,
+      "camera": "NAVCAM",
+      "date": "2020-06-03",
       "id": 1
     },
     {
@@ -43,11 +43,11 @@
       "id": 2
     },
     {
-      "userId": 1,
-      "comment": "Cool Mars",
-      "date": "2020-06-07",
-      "camera": "MAST",
+      "comment": "Coolest Mars",
       "url": "https://mars.nasa.gov/msl-raw-images/msss/02786/mcam/2786MR0145950081202784C00_DXXX.jpg",
+      "userId": 1,
+      "camera": "MAST",
+      "date": "2020-06-07",
       "id": 3
     },
     {
