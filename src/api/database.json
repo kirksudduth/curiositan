@@ -25,5 +25,18 @@
       "id": 4
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "userId": "",
+      "comment": "23W",
+      "id": 1
+    },
+    {
+      "userId": "",
+      "comment": "wffffff",
+      "date": "",
+      "camera": "",
+      "id": 2
+    }
+  ]
 }

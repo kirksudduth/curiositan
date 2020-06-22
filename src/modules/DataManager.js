@@ -35,4 +35,13 @@ export default {
       body: JSON.stringify(user),
     }).then((data) => data.json());
   },
+  postSavedPhoto(photo) {
+    return fetch(`${localURL}/photos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(photo),
+    }).then((data) => data.json());
+  },
 };

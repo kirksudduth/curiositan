@@ -9,10 +9,12 @@ import {
   Image,
   Icon,
   Modal,
+  Input,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
+  const postSavedPhoto = DataManager.postSavedPhoto;
   const roverPhotos = props.roverPhotos.photos;
   const getRoverPhotos = props.getRoverPhotos;
   const handleRadioChange = props.handleRadioChange;
@@ -20,13 +22,70 @@ const PhotoSearchForm = (props) => {
   const date = props.date;
   const camValue = props.camera;
   const [cameras, setCameras] = useState([]);
+  const [savedPhoto, setSavedPhoto] = useState({
+    userId: "",
+    comment: "",
+    date: "",
+    camera: "",
+  });
+  // const createPhotoObj = (obj) => {
+  //   const comment = document.querySelector("#comment").value;
+  //   return {
+  //     userId: 2,
+  //     comment: comment,
+  //     date: obj.earth_date,
+  //     camera: obj.camera.full_name,
+  //   };
+  // };
+
+  // const yellow = () => {
+  //   console.log("yellow");
+  // };
+
+  const makePhotoWithComment = (evt, obj) => {
+    const stateToChange = { ...savedPhoto };
+    // evt.persist();
+    stateToChange.date = obj.earth_date;
+    stateToChange.camera = obj.camera;
+    stateToChange.userId = 1;
+    setSavedPhoto(stateToChange);
+    handleFieldChange(evt);
+  };
+
+  const handleFieldChange = (evt) => {
+    const stateToChange = { ...savedPhoto };
+    // const comment = Document.getElementById("comment").value;
+    evt.persist();
+    console.log(evt);
+    stateToChange.comment = evt.target.value;
+    // stateToChange.date = obj.earth_date;
+    // stateToChange.camera = obj.earth_date;
+    setSavedPhoto(stateToChange);
+  };
 
   const modalsRule = (obj) => (
     <Modal trigger={<Icon name="eye" />} closeIcon>
-      <Header content="Big Pic" />
+      <Header content="BIG  PHOTO" />
       <Modal.Content>
-        <Image size="huge" src={obj.img_src} />
+        <Image size="large" src={obj.img_src} />
       </Modal.Content>
+      <Modal.Actions>
+        <Form type="submit">
+          <Input
+            label="Comment: "
+            id="comment"
+            fluid
+            onChange={makePhotoWithComment}
+            type="text area"
+            style={{ marginBottom: 10 }}
+          />
+          <Button
+            icon="save outline"
+            onClick={() => postSavedPhoto(savedPhoto)}
+            content="Save Photo"
+          />
+        </Form>
+      </Modal.Actions>
     </Modal>
   );
 

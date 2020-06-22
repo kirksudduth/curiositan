@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import React, { useState } from "react";
-import Login from "./Login";
 import NewUser from "./NewUser";
 import PhotoSearchList from "../components/photos/PhotoSearchList";
 import DataManager from "../modules/DataManager";
