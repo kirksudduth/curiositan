@@ -28,9 +28,10 @@
   "photos": [
     {
       "userId": 1,
-      "comment": "WOW, that's cooL!",
-      "date": "2020-06-02",
-      "camera": "FHAZ",
+      "comment": "Curiosity!",
+      "date": "2020-06-03",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/ncam/NRB_644459716EDR_F0792640NCAM00117M_.JPG",
       "id": 1
     }
   ]

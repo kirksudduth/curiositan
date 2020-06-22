@@ -25,36 +25,44 @@ const PhotoSearchForm = (props) => {
   const [savedPhoto, setSavedPhoto] = useState({
     userId: "",
     comment: "",
-    date: date.date,
-    camera: camValue.value,
+    date: "",
+    camera: "",
+    url: "",
   });
 
   const makePhotoWithComment = (obj) => {
     const stateToChange = { ...savedPhoto };
-    // evt.persist();
-    console.log(obj);
-    debugger;
     stateToChange.date = obj.earth_date;
     stateToChange.camera = obj.camera.name;
     stateToChange.userId = 1;
+    stateToChange.url = obj.img_src;
     setSavedPhoto(stateToChange);
-    DataManager.postSavedPhoto(stateToChange);
-    // handleFieldChange(evt);
+    debugger;
+    DataManager.postSavedPhoto(stateToChange).then(handleClose);
   };
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...savedPhoto };
-    // const comment = Document.getElementById("comment").value;
     evt.persist();
-    console.log(evt);
     stateToChange.comment = evt.target.value;
-    // stateToChange.date = obj.earth_date;
-    // stateToChange.camera = obj.earth_date;
     setSavedPhoto(stateToChange);
   };
 
+  const [modalWindow, setModalWindow] = useState({ open: false });
+  const handleOpen = () => {
+    const stateToChange = { ...modalWindow };
+    stateToChange.open = true;
+    setModalWindow(stateToChange);
+  };
+
+  const handleClose = () => {
+    const stateToChange = { ...modalWindow };
+    stateToChange.open = false;
+    setModalWindow(stateToChange);
+  };
+
   const modalsRule = (obj) => (
-    <Modal trigger={<Icon name="eye" />} closeIcon>
+    <Modal trigger={<Icon onClick={handleOpen} name="eye" />} closeIcon>
       <Header content="BIG  PHOTO" />
       <Modal.Content>
         <Image size="large" src={obj.img_src} />
