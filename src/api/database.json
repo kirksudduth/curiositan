@@ -27,16 +27,11 @@
   ],
   "photos": [
     {
-      "userId": "",
-      "comment": "23W",
+      "userId": 1,
+      "comment": "WOW, that's cooL!",
+      "date": "2020-06-02",
+      "camera": "FHAZ",
       "id": 1
-    },
-    {
-      "userId": "",
-      "comment": "wffffff",
-      "date": "",
-      "camera": "",
-      "id": 2
     }
   ]
 }
