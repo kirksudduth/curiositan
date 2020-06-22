@@ -13,6 +13,7 @@ import {
 } from "semantic-ui-react";
 
 const PhotosSaved = () => {
+  const deletePhoto = DataManager.deletePhoto;
   const getSavedPhotos = DataManager.getSavedPhotos;
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [editedPhoto, setEditedPhoto] = useState({
@@ -64,13 +65,13 @@ const PhotosSaved = () => {
   );
 
   const deleteModal = (obj) => (
-    <Modal trigger={<Icon name="trash alternate outline" basic size="small" />}>
+    <Modal trigger={<Icon name="trash alternate outline" size="small" />}>
       <Header icon="trash alternate outline" content="Delete Photo?" />
       <Modal.Content>
         <p>Sure, you want to delete the photo?</p>
       </Modal.Content>
       <Modal.Actions>
-        <Button id="delete">
+        <Button id="delete" onClick={() => deletePhoto(obj.id)}>
           <Icon name="trash alternate outline" />
           Delete
         </Button>

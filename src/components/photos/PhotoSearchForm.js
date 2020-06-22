@@ -14,7 +14,6 @@ import {
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
-  const postSavedPhoto = DataManager.postSavedPhoto;
   const roverPhotos = props.roverPhotos.photos;
   const getRoverPhotos = props.getRoverPhotos;
   const handleRadioChange = props.handleRadioChange;
