@@ -58,4 +58,9 @@ export default {
       body: JSON.stringify(editedPhoto),
     }).then((data) => data.json());
   },
+  deletePhoto(id) {
+    return fetch(`${localURL}/photos/${id}`, {
+      method: "DELETE",
+    }).then((result) => result.json());
+  },
 };
