@@ -49,6 +49,14 @@
       "camera": "MAST",
       "url": "https://mars.nasa.gov/msl-raw-images/msss/02786/mcam/2786MR0145950081202784C00_DXXX.jpg",
       "id": 3
+    },
+    {
+      "userId": 1,
+      "comment": "yea yea",
+      "date": "2020-06-03",
+      "camera": "FHAZ",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/fcam/FRB_644459613EDR_F0792640FHAZ00341M_.JPG",
+      "id": 4
     }
   ]
 }

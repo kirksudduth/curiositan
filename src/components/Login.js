@@ -41,7 +41,6 @@ const Login = (props) => {
         userLogin.password === user[0].password
       ) {
         setUpCredentials(user);
-        debugger;
         handleLogin();
         console.log("credentials: ", credentials);
         console.log("sessionStorage: ", sessionStorage);
