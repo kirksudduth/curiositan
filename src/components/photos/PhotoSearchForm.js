@@ -83,6 +83,24 @@ const PhotoSearchForm = (props) => {
     });
   };
 
+  const cameraPopupContent = (camera) => {
+    if (camera === "FHAZ") {
+      return "Front Hazard Avoidance Camera -- helps Curiosity avoid Martian obstacles in front.";
+    } else if (camera === "RHAZ") {
+      return "Rear Hazard Avoidance Camera -- helps Curiosity keep an eye on those haters trying to creep.";
+    } else if (camera === "MAST") {
+      return "Mast Cameras -- take true-color images. Feel like some of the better pics are taken by these cameras.";
+    } else if (camera === "NAVCAM") {
+      return "Navigation Cameras -- black and white cameras helps Curiosity plan its next moves and scope out terrain.";
+    } else if (camera === "MAHLI") {
+      return "Mars Hand Lens Imager -- takes microscopic pictures of Mars stuff, yo!";
+    } else if (camera === "CHEMCAM") {
+      return "Chemistry and Camera Complex -- a microscope takes pictures of Martian terrain after its lazer hand blasts it.";
+    } else if (camera === "MARDI") {
+      return "Mars Descent Imager -- mainly used for Curiosity's descent to Mars. Took hella pics.";
+    }
+  };
+
   return (
     <>
       <Grid verticalAlign="middle">
@@ -121,8 +139,7 @@ const PhotoSearchForm = (props) => {
                 </Button>
               </Form.Field>
             </Form.Group>
-            <Form.Group grouped>
-              <Popup
+            {/* <Popup
                 // content="Cameras"
                 trigger={<label>Camera Type:</label>}
                 flowing
@@ -135,14 +152,22 @@ const PhotoSearchForm = (props) => {
                     </Grid.Column>
                   ))}
                 </Grid>
-              </Popup>
+              </Popup> */}
+            <Form.Group grouped>
+              <label>Camera Type:</label>
               {cameras.map((camera) => (
-                <Form.Radio
+                <Popup
                   key={camera}
-                  label={camera}
-                  value={camera}
-                  checked={camValue.value === `${camera}`}
-                  onChange={handleRadioChange}
+                  content={cameraPopupContent(camera)}
+                  trigger={
+                    <Form.Radio
+                      key={camera}
+                      label={camera}
+                      value={camera}
+                      checked={camValue.value === `${camera}`}
+                      onChange={handleRadioChange}
+                    />
+                  }
                 />
               ))}
             </Form.Group>
@@ -172,16 +197,15 @@ const PhotoSearchForm = (props) => {
             ? []
             : roverPhotos.map((photo) => (
                 <Grid.Column key={photo.id} width={4}>
-                  <Card
-                    disabled
-                    style={{ marginBottom: 5 }}
-                    raised
-                    key={photo.id}
-                  >
+                  <Card style={{ marginBottom: 10 }} raised key={photo.id}>
                     <Card.Content>
                       <Image size="tiny" floated="right" src={photo.img_src} />
-                      <Card.Meta>Camera: {photo.camera.full_name}</Card.Meta>
-                      <Card.Meta>Date: {photo.earth_date}</Card.Meta>
+                      <Card.Meta>
+                        <h4>Camera:</h4> {photo.camera.full_name}
+                      </Card.Meta>
+                      <Card.Meta>
+                        <h4>Date:</h4> {photo.earth_date}
+                      </Card.Meta>
                     </Card.Content>
                     <Card.Content extra>{modalsRule(photo)}</Card.Content>
                   </Card>
