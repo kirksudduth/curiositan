@@ -83,20 +83,25 @@ const PhotosSaved = () => {
             />
             {
               <Button
-                icon="save outline"
+                animated="fade"
                 onClick={() => {
                   editedCommentPhoto(obj);
                   getSavedPhotos(userId);
                   handleClose();
                 }}
-                content="Save Photo"
                 style={{ marginBottom: 10 }}
-              />
+              >
+                <Button.Content visible>
+                  <Icon name="save outline" /> Save Comment
+                </Button.Content>
+                <Button.Content hidden>
+                  <Icon name="save" /> Saved!
+                </Button.Content>
+              </Button>
             }
           </Form>
         </Modal.Actions>
       </Modal>
-      {/* <Icon id={obj.id} onClick={() => handleOpen} name="edit outline" /> */}
     </>
   );
 
@@ -138,7 +143,7 @@ const PhotosSaved = () => {
       <Header textAlign="center" content="Saved Photos" />
       <Grid centered columns={2} verticalAlign="middle">
         <Grid.Row centered columns={4}>
-          {savedPhotos.map((photo) => (
+          {savedPhotos.reverse().map((photo) => (
             <Grid.Column key={photo.id}>
               <Card style={{ marginBottom: 5 }} raised key={photo.id}>
                 <Card.Description floated="right">

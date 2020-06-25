@@ -7,13 +7,6 @@ const PhotoSearchList = (props) => {
   const [date, setDate] = useState({ date: "" });
   const [camValue, setCamValue] = useState({ value: "" });
 
-  const [roverPhotos, setRoverPhotos] = useState([]);
-
-  const getRoverPhotos = (date, camera) => {
-    DataManager.getRoverPhotos(date, camera).then((photosArray) =>
-      setRoverPhotos(photosArray)
-    );
-  };
   const handleDateFieldChange = (evt) => {
     evt.persist();
     const stateToChange = { ...date };
@@ -34,10 +27,8 @@ const PhotoSearchList = (props) => {
           <PhotoSearchForm
             handleRadioChange={handleRadioChange}
             handleDateFieldChange={handleDateFieldChange}
-            getRoverPhotos={getRoverPhotos}
             date={date}
             camera={camValue}
-            roverPhotos={roverPhotos}
           />
         </Grid.Row>
       </Grid>
