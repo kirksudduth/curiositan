@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import DataManager from "../../modules/DataManager";
 import {
   Header,
@@ -13,9 +14,12 @@ import {
 } from "semantic-ui-react";
 
 const PhotosSaved = () => {
+  const putEditedPhoto = DataManager.putEditedPhoto;
   const deletePhoto = DataManager.deletePhoto;
   const getSavedPhotos = DataManager.getSavedPhotos;
   const [savedPhotos, setSavedPhotos] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [deleteModalState, setDeleteModalState] = useState(false);
   const [editedPhoto, setEditedPhoto] = useState({
     comment: "",
     url: "",
@@ -24,64 +28,25 @@ const PhotosSaved = () => {
     date: "",
     id: "",
   });
+
   const userId = JSON.parse(sessionStorage.credentials);
-  const putEditedPhoto = DataManager.putEditedPhoto;
+
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
+  const handleDeleteOpen = () => setDeleteModalState(true);
+  const handleDeleteClose = () => setDeleteModalState(false);
+  useEffect(() => {
+    getSavedPhotos(userId).then((result) => setSavedPhotos(result.photos));
+  }, [modalOpen]);
+  useEffect(() => {
+    getSavedPhotos(userId).then((result) => setSavedPhotos(result.photos));
+  }, [deleteModalState]);
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...editedPhoto };
     stateToChange.comment = evt.target.value;
     setEditedPhoto(stateToChange);
-    console.log(stateToChange.comment);
   };
-  useEffect(() => {
-    getSavedPhotos(userId).then((result) => setSavedPhotos(result.photos));
-  }, []);
-
-  const editModal = (obj) => (
-    <Modal trigger={<Icon name="edit outline" />}>
-      <Header content="Change how you remember this." />
-      <Modal.Content>
-        <Image size="large" src={obj.url} />
-      </Modal.Content>
-      <Modal.Actions>
-        <Form>
-          <Input
-            label="Edit Comment: "
-            id="comment"
-            fluid
-            onChange={handleFieldChange}
-            placeholder={obj.comment}
-            type="text area"
-            style={{ marginBottom: 10 }}
-          />
-          <Button
-            icon="save outline"
-            onClick={() => editedCommentPhoto(obj)}
-            content="Save Photo"
-          />
-        </Form>
-      </Modal.Actions>
-    </Modal>
-  );
-
-  const deleteModal = (obj) => (
-    <Modal trigger={<Icon name="trash alternate outline" size="small" />}>
-      <Header icon="trash alternate outline" content="Delete Photo?" />
-      <Modal.Content>
-        <p>Sure, you want to delete the photo?</p>
-      </Modal.Content>
-      <Modal.Actions>
-        <Button id="delete" onClick={() => deletePhoto(obj.id)}>
-          <Icon name="trash alternate outline" />
-          Delete
-        </Button>
-        <Button id="keep">
-          <Icon name="archive" />
-          Keep
-        </Button>
-      </Modal.Actions>
-    </Modal>
-  );
 
   const editedCommentPhoto = (obj) => {
     const stateToChange = { ...editedPhoto };
@@ -94,9 +59,83 @@ const PhotosSaved = () => {
     putEditedPhoto(stateToChange);
   };
 
+  const editModal = (obj) => (
+    <>
+      <Modal
+        trigger={<Icon id={obj.id} name="edit outline" onClick={handleOpen} />}
+        // open={modalOpen}
+        onClose={handleClose}
+      >
+        <Header content="Change how you remember this." />
+        <Modal.Content>
+          <Image size="large" src={obj.url} />
+        </Modal.Content>
+        <Modal.Actions>
+          <Form>
+            <Input
+              label="Edit Comment: "
+              id="comment"
+              fluid
+              onChange={handleFieldChange}
+              defaultValue={obj.comment}
+              type="text area"
+              style={{ marginBottom: 10 }}
+            />
+            {
+              <Button
+                icon="save outline"
+                onClick={() => {
+                  editedCommentPhoto(obj);
+                  getSavedPhotos(userId);
+                  handleClose();
+                }}
+                content="Save Photo"
+                style={{ marginBottom: 10 }}
+              />
+            }
+          </Form>
+        </Modal.Actions>
+      </Modal>
+      {/* <Icon id={obj.id} onClick={() => handleOpen} name="edit outline" /> */}
+    </>
+  );
+
+  const deleteModal = (obj) => (
+    <Modal
+      trigger={
+        <Icon
+          name="trash alternate outline"
+          onClick={handleDeleteOpen}
+          size="small"
+        />
+      }
+    >
+      <Header icon="trash alternate outline" content="Delete Photo?" />
+      <Modal.Content>
+        <p>Sure, you want to delete the photo?</p>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button
+          id="delete"
+          onClick={() => {
+            deletePhoto(obj.id);
+            handleDeleteClose();
+          }}
+        >
+          <Icon name="trash alternate outline" />
+          Delete
+        </Button>
+        <Button id="keep" onClick={() => handleDeleteClose()}>
+          <Icon name="archive" />
+          Keep
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  );
+
   return (
     <>
-      <Header content="Saved Photos" />
+      <Header textAlign="center" content="Saved Photos" />
       <Grid.Row>
         {savedPhotos.map((photo) => (
           <Grid.Column key={photo.id} width={4}>
@@ -110,7 +149,7 @@ const PhotosSaved = () => {
                 <Card.Meta>Date: {photo.date}</Card.Meta>
                 <Card.Meta>Comment: {photo.comment} </Card.Meta>
               </Card.Content>
-              <Card.Content extra>{editModal(photo, editedPhoto)}</Card.Content>
+              <Card.Content extra>{editModal(photo)}</Card.Content>
             </Card>
           </Grid.Column>
         ))}
@@ -119,4 +158,4 @@ const PhotosSaved = () => {
   );
 };
 
-export default PhotosSaved;
+export default withRouter(PhotosSaved);

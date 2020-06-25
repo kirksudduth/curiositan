@@ -21,6 +21,13 @@ export default {
       `${keys.curiosityAPI_url}&earth_date=${date}&${keys.curiosityAPI_key}`
     ).then((result) => result.json());
   },
+  getLatestPhotos() {
+    return fetch(
+      `${keys.curiosityAPI_latest_photos_url}${keys.curiosityAPI_key}`
+    )
+      .then((result) => result.json())
+      .then((array) => console.log(array));
+  },
   getUserByEmail(email) {
     return fetch(`${localURL}/users?email=${email}`).then((result) =>
       result.json()
@@ -43,6 +50,11 @@ export default {
       },
       body: JSON.stringify(photo),
     }).then((data) => data.json());
+  },
+  getSavedPhoto(photoId) {
+    return fetch(`${localURL}/photos/${photoId}`).then((result) =>
+      result.json()
+    );
   },
   getSavedPhotos(userId) {
     return fetch(`${localURL}/users/${userId}?_embed=photos`).then((data) =>

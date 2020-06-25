@@ -15,12 +15,6 @@ const Login = (props) => {
   const setUser = props.setUser;
 
   const [credentials, setCredentials] = useState({});
-  // const setUpCredentials = (user) => {
-  //   const stateToChange = { ...credentials };
-  //   stateToChange.username = user[0].username;
-  //   stateToChange.id = user[0].id;
-  //   setCredentials(stateToChange);
-  // };
 
   const handleFieldChange = (evt) => {
     const stateToChange = { ...credentials };
@@ -47,7 +41,6 @@ const Login = (props) => {
         credentials.id = user[0].id;
         credentials.username = user[0].username;
         console.log(credentials.id, credentials.username);
-        // setUpCredentials(user);
         handleLogin();
         console.log("credentials: ", credentials);
         console.log("sessionStorage: ", sessionStorage);

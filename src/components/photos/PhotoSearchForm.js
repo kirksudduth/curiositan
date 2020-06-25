@@ -10,10 +10,12 @@ import {
   Icon,
   Modal,
   Input,
+  Popup,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
+  const getLatestPhotos = DataManager.getLatestPhotos;
   const roverPhotos = props.roverPhotos.photos;
   const getRoverPhotos = props.getRoverPhotos;
   const handleRadioChange = props.handleRadioChange;
@@ -37,9 +39,7 @@ const PhotoSearchForm = (props) => {
     stateToChange.userId = userId;
     stateToChange.url = obj.img_src;
     setSavedPhoto(stateToChange);
-    debugger;
     DataManager.postSavedPhoto(stateToChange);
-    // .then(handleClose);
   };
 
   const handleFieldChange = (evt) => {
@@ -49,29 +49,8 @@ const PhotoSearchForm = (props) => {
     setSavedPhoto(stateToChange);
   };
 
-  // const [modalWindow, setModalWindow] = useState({ open: false });
-  // const handleOpen = () => {
-  //   const stateToChange = { ...modalWindow };
-  //   stateToChange.open = true;
-  //   setModalWindow(stateToChange);
-  // };
-
-  // const handleClose = () => {
-  //   const stateToChange = { ...modalWindow };
-  //   stateToChange.open = false;
-  //   setModalWindow(stateToChange);
-  // };
-
   const modalsRule = (obj) => (
-    <Modal
-      trigger={
-        <Icon
-          // onClick={handleOpen}
-          name="eye"
-        />
-      }
-      closeIcon
-    >
+    <Modal trigger={<Icon name="eye" />} closeIcon>
       <Header content="BIG  PHOTO" />
       <Modal.Content>
         <Image size="large" src={obj.img_src} />
@@ -90,11 +69,13 @@ const PhotoSearchForm = (props) => {
             icon="save outline"
             onClick={() => makePhotoWithComment(obj)}
             content="Save Photo"
+            style={{ marginBottom: 10 }}
           />
         </Form>
       </Modal.Actions>
     </Modal>
   );
+  console.log(cameras);
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
@@ -142,7 +123,20 @@ const PhotoSearchForm = (props) => {
               </Form.Field>
             </Form.Group>
             <Form.Group grouped>
-              <label>Camera Type:</label>
+              <Popup
+                // content="Cameras"
+                trigger={<label>Camera Type:</label>}
+                flowing
+                hoverable
+              >
+                <Grid centered divided columns={cameras.length}>
+                  {cameras.map((camera) => (
+                    <Grid.Column textAlign="center">
+                      <Header as="h6">{camera}</Header>
+                    </Grid.Column>
+                  ))}
+                </Grid>
+              </Popup>
               {cameras.map((camera) => (
                 <Form.Radio
                   key={camera}
@@ -171,7 +165,7 @@ const PhotoSearchForm = (props) => {
         <Grid.Column width={4}>
           <Message style={{ align: "center" }}>
             Want to see the latest photos Curiosity has taken?{" "}
-            <a href="/latest_photos">Click Here!</a>
+            <Button onClick={() => getLatestPhotos()}>Click Here!</Button>
           </Message>
         </Grid.Column>
         <Grid.Row>
@@ -179,7 +173,12 @@ const PhotoSearchForm = (props) => {
             ? []
             : roverPhotos.map((photo) => (
                 <Grid.Column key={photo.id} width={4}>
-                  <Card style={{ marginBottom: 5 }} raised key={photo.id}>
+                  <Card
+                    disabled
+                    style={{ marginBottom: 5 }}
+                    raised
+                    key={photo.id}
+                  >
                     <Card.Content>
                       <Image size="tiny" floated="right" src={photo.img_src} />
                       <Card.Meta>Camera: {photo.camera.full_name}</Card.Meta>

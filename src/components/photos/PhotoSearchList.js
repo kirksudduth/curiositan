@@ -26,9 +26,6 @@ const PhotoSearchList = (props) => {
     stateToChange.value = evt.target.innerText;
     setCamValue(stateToChange);
   };
-  // useEffect(() => {
-  //   getRoverPhotos(date, camera);
-  // }, []);
 
   return (
     <>
