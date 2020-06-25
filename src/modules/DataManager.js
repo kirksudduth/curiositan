@@ -24,9 +24,7 @@ export default {
   getLatestPhotos() {
     return fetch(
       `${keys.curiosityAPI_latest_photos_url}${keys.curiosityAPI_key}`
-    )
-      .then((result) => result.json())
-      .then((array) => console.log(array));
+    ).then((result) => result.json());
   },
   getUserByEmail(email) {
     return fetch(`${localURL}/users?email=${email}`).then((result) =>

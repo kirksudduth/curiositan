@@ -35,7 +35,7 @@
       "id": 1
     },
     {
-      "comment": "M A R S is dusty af -- fuh real doh",
+      "comment": "M A R S is dusty af -- srsly",
       "url": "https://mars.nasa.gov/msl-raw-images/msss/02786/mcam/2786ML0145970000606668C00_DXXX.jpg",
       "userId": 1,
       "camera": "MAST",
@@ -193,6 +193,86 @@
       "camera": "MAST",
       "date": "2014-10-19",
       "id": 25
+    },
+    {
+      "userId": 1,
+      "comment": "Rocks on Mars",
+      "date": "2014-02-22",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00550/mcam/0550ML0022251160204289E01_DXXX.jpg",
+      "id": 26
+    },
+    {
+      "userId": 1,
+      "comment": "MARS DESERT!!!",
+      "date": "2016-02-01",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/01240/mcam/1240MR0057560020603540C00_DXXX.jpg",
+      "id": 27
+    },
+    {
+      "userId": 1,
+      "comment": "Curiosity got its thumb in the the lens -- also that shadow looks like a troll face",
+      "date": "2019-11-24",
+      "camera": "MAST",
+      "url": "https://mars.nasa.gov/msl-raw-images/msss/02595/mcam/2595ML0136480000307010C00_DXXX.jpg",
+      "id": 28
+    },
+    {
+      "userId": 1,
+      "comment": "Sandy ridge",
+      "date": "2019-11-24",
+      "camera": "MAST",
+      "url": "https://mars.nasa.gov/msl-raw-images/msss/02595/mcam/2595MR0136450211100827C00_DXXX.jpg",
+      "id": 29
+    },
+    {
+      "userId": 1,
+      "comment": "so cool",
+      "date": "2019-11-24",
+      "camera": "MAST",
+      "url": "https://mars.nasa.gov/msl-raw-images/msss/02595/mcam/2595ML0136490040307020C00_DXXX.jpg",
+      "id": 30
+    },
+    {
+      "userId": 1,
+      "comment": "Curiosity, rock crawling!",
+      "date": "2020-06-24",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646247154EDR_F0810424NCAM00354M_.JPG",
+      "id": 31
+    },
+    {
+      "userId": 1,
+      "comment": "Martian plains",
+      "date": "2020-06-24",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646246510EDR_F0810424NCAM00274M_.JPG",
+      "id": 32
+    },
+    {
+      "userId": 1,
+      "comment": "4th rock from the sun",
+      "date": "2020-06-24",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646246572EDR_F0810424NCAM00274M_.JPG",
+      "id": 33
+    },
+    {
+      "userId": 1,
+      "comment": "Siiiiiiick brah",
+      "date": "2020-06-24",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646247006EDR_F0810424NCAM00275M_.JPG",
+      "id": 34
+    },
+    {
+      "userId": 1,
+      "comment": "those crazy martian nights -- er, days???",
+      "date": "2020-06-24",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646247404EDR_S0810424NCAM00276M_.JPG",
+      "id": 35
     }
   ]
 }

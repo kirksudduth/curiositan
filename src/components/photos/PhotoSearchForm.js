@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Message,
   Header,
@@ -11,18 +11,23 @@ import {
   Modal,
   Input,
   Popup,
-  Segment,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
 const PhotoSearchForm = (props) => {
   const getLatestPhotos = DataManager.getLatestPhotos;
-  const roverPhotos = props.roverPhotos.photos;
-  const getRoverPhotos = props.getRoverPhotos;
   const handleRadioChange = props.handleRadioChange;
   const handleDateFieldChange = props.handleDateFieldChange;
   const date = props.date;
   const camValue = props.camera;
+
+  const [roverPhotos, setRoverPhotos] = useState([]);
+  const getRoverPhotos = (date, camera) => {
+    setLatestPhotos();
+    DataManager.getRoverPhotos(date, camera).then((photosArray) =>
+      setRoverPhotos(photosArray.photos)
+    );
+  };
   const [cameras, setCameras] = useState([]);
   const [savedPhoto, setSavedPhoto] = useState({
     userId: "",
@@ -31,6 +36,7 @@ const PhotoSearchForm = (props) => {
     camera: "",
     url: "",
   });
+  const [latestPhotos, setLatestPhotos] = useState([]);
   const userId = JSON.parse(sessionStorage.credentials);
 
   const makePhotoWithComment = (obj) => {
@@ -50,6 +56,7 @@ const PhotoSearchForm = (props) => {
     setSavedPhoto(stateToChange);
   };
 
+  // *****  MODAL FOR SAVE PHOTO FUNCTION  *****
   const modalsRule = (obj) => (
     <Modal trigger={<Icon name="eye" />} closeIcon>
       <Header content="BLOWN UP" />
@@ -67,11 +74,17 @@ const PhotoSearchForm = (props) => {
             style={{ marginBottom: 10 }}
           />
           <Button
-            icon="save outline"
+            animated
             onClick={() => makePhotoWithComment(obj)}
-            content="Save Photo"
             style={{ marginBottom: 10 }}
-          />
+          >
+            <Button.Content visible>
+              <Icon name="save outline" /> Save Photo
+            </Button.Content>
+            <Button.Content hidden>
+              <Icon name="save" /> Saved!
+            </Button.Content>
+          </Button>
         </Form>
       </Modal.Actions>
     </Modal>
@@ -84,7 +97,7 @@ const PhotoSearchForm = (props) => {
     });
   };
 
-  const cameraPopupContent = (camera) => {
+  const camerasPopupContent = (camera) => {
     if (camera === "FHAZ") {
       return "Front Hazard Avoidance Camera -- helps Curiosity avoid Martian obstacles in front.";
     } else if (camera === "RHAZ") {
@@ -102,6 +115,11 @@ const PhotoSearchForm = (props) => {
     }
   };
 
+  const clearPhotosAndGetLatest = () => {
+    setRoverPhotos();
+    getLatestPhotos().then((obj) => setLatestPhotos(obj.latest_photos));
+  };
+  // useEffect(() => {}, [latestPhotos]);
   return (
     <>
       <Grid verticalAlign="middle" width="equal">
@@ -140,37 +158,27 @@ const PhotoSearchForm = (props) => {
                 </Button>
               </Form.Field>
             </Form.Group>
-            {/* <Popup
-                // content="Cameras"
-                trigger={<label>Camera Type:</label>}
-                flowing
-                hoverable
-              >
-                <Grid centered divided columns={cameras.length}>
-                  {cameras.map((camera) => (
-                    <Grid.Column textAlign="center">
-                      <Header as="h6">{camera}</Header>
-                    </Grid.Column>
-                  ))}
-                </Grid>
-              </Popup> */}
             <Form.Group grouped>
               <label>Camera Type:</label>
-              {cameras.map((camera) => (
-                <Popup
-                  key={camera}
-                  content={cameraPopupContent(camera)}
-                  trigger={
-                    <Form.Radio
+              <Grid.Row>
+                {cameras.map((camera) => (
+                  <Grid.Column width={2}>
+                    <Popup
                       key={camera}
-                      label={camera}
-                      value={camera}
-                      checked={camValue.value === `${camera}`}
-                      onChange={handleRadioChange}
+                      content={camerasPopupContent(camera)}
+                      trigger={
+                        <Form.Radio
+                          key={camera}
+                          label={camera}
+                          value={camera}
+                          checked={camValue.value === `${camera}`}
+                          onChange={handleRadioChange}
+                        />
+                      }
                     />
-                  }
-                />
-              ))}
+                  </Grid.Column>
+                ))}
+              </Grid.Row>
             </Form.Group>
             <Button
               size="tiny"
@@ -190,13 +198,38 @@ const PhotoSearchForm = (props) => {
         <Grid.Column width={4}>
           <Message style={{ align: "center" }}>
             Want to see the latest photos Curiosity has taken?{" "}
-            <Button onClick={() => getLatestPhotos()}>Click Here!</Button>
+            <Button fluid onClick={() => clearPhotosAndGetLatest()}>
+              Click Here!
+            </Button>
           </Message>
         </Grid.Column>
         <Grid.Row>
           {!roverPhotos
             ? []
             : roverPhotos.map((photo) => (
+                <Grid.Column key={photo.id} width={4}>
+                  <Card style={{ marginBottom: 10 }} raised key={photo.id}>
+                    <Card.Content>
+                      <Image
+                        rounded
+                        size="tiny"
+                        floated="right"
+                        src={photo.img_src}
+                      />
+                      <Card.Meta>
+                        <h4>Camera:</h4> {photo.camera.full_name}
+                      </Card.Meta>
+                      <Card.Meta>
+                        <h4>Date:</h4> {photo.earth_date}
+                      </Card.Meta>
+                    </Card.Content>
+                    <Card.Content extra>{modalsRule(photo)}</Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))}
+          {!latestPhotos
+            ? []
+            : latestPhotos.map((photo) => (
                 <Grid.Column key={photo.id} width={4}>
                   <Card style={{ marginBottom: 10 }} raised key={photo.id}>
                     <Card.Content>
