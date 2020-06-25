@@ -91,11 +91,11 @@
       "id": 11
     },
     {
-      "userId": 2,
-      "comment": "WEEEEEE",
-      "date": "2020-06-04",
-      "camera": "MAST",
+      "comment": "What kinda rock is that???",
       "url": "https://mars.nasa.gov/msl-raw-images/msss/02783/mcam/2783MR0145660001202629C00_DXXX.jpg",
+      "userId": 2,
+      "camera": "MAST",
+      "date": "2020-06-04",
       "id": 13
     },
     {
@@ -145,6 +145,38 @@
       "camera": "NAVCAM",
       "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00170/opgs/edr/ncam/NRA_412582496EDR_F0060000NCAM00367M_.JPG",
       "id": 19
+    },
+    {
+      "userId": 2,
+      "comment": "The good, the bad, the martian",
+      "date": "2015-03-20",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00931/mcam/0931ML0040940090402879C00_DXXX.jpg",
+      "id": 20
+    },
+    {
+      "userId": 2,
+      "comment": "shadows on mars",
+      "date": "2018-05-07",
+      "camera": "RHAZ",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02044/opgs/edr/rcam/RRB_578948600EDR_F0701138RHAZ00311M_.JPG",
+      "id": 21
+    },
+    {
+      "userId": 2,
+      "comment": "Fun lil joystick with a go get 'em message",
+      "date": "2014-07-20",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00694/mcam/0694ML0029350060304140E01_DXXX.jpg",
+      "id": 22
+    },
+    {
+      "userId": 2,
+      "comment": "V cool windswept martian surface",
+      "date": "2014-07-20",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00694/mcam/0694MR0029340070402229D01_DXXX.jpg",
+      "id": 23
     }
   ]
 }

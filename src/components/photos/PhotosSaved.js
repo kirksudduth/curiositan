@@ -68,7 +68,7 @@ const PhotosSaved = () => {
       >
         <Header content="Change how you remember this." />
         <Modal.Content>
-          <Image size="large" src={obj.url} />
+          <Image size="huge" src={obj.url} />
         </Modal.Content>
         <Modal.Actions>
           <Form>
@@ -136,7 +136,7 @@ const PhotosSaved = () => {
   return (
     <>
       <Header textAlign="center" content="Saved Photos" />
-      <Grid celled verticalAlign="middle" width={2}>
+      <Grid centered width={2}>
         <Grid.Row>
           {savedPhotos.map((photo) => (
             <Grid.Column key={photo.id} width={8}>
@@ -146,8 +146,12 @@ const PhotosSaved = () => {
                 </Card.Description>
                 <Card.Content>
                   <Image size="small" floated="right" src={photo.url} />
-                  <Card.Meta>Camera: {photo.camera}</Card.Meta>
-                  <Card.Meta>Date: {photo.date}</Card.Meta>
+                  <Card.Meta>
+                    <h4>{photo.camera}</h4>
+                  </Card.Meta>
+                  <Card.Meta>
+                    <h4>{photo.date}</h4>
+                  </Card.Meta>
                   <Card.Content>Comment: {photo.comment} </Card.Content>
                 </Card.Content>
                 <Card.Content extra>{editModal(photo)}</Card.Content>
