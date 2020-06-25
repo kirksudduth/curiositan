@@ -129,6 +129,22 @@
       "camera": "MAST",
       "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/01468/mcam/1468ML0073470000603294E01_DXXX.jpg",
       "id": 17
+    },
+    {
+      "userId": 2,
+      "comment": "Horizon on Mars",
+      "date": "2016-10-11",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01487/opgs/edr/ncam/NLB_529508399EDR_F0581986NCAM07753M_.JPG",
+      "id": 18
+    },
+    {
+      "userId": 2,
+      "comment": "Cool stuff... lil robot arm doing something on Mars",
+      "date": "2013-01-27",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00170/opgs/edr/ncam/NRA_412582496EDR_F0060000NCAM00367M_.JPG",
+      "id": 19
     }
   ]
 }
