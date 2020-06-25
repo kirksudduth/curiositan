@@ -136,24 +136,26 @@ const PhotosSaved = () => {
   return (
     <>
       <Header textAlign="center" content="Saved Photos" />
-      <Grid.Row>
-        {savedPhotos.map((photo) => (
-          <Grid.Column key={photo.id} width={4}>
-            <Card style={{ marginBottom: 5 }} raised key={photo.id}>
-              <Card.Description floated="right">
-                {deleteModal(photo)}
-              </Card.Description>
-              <Card.Content>
-                <Image size="tiny" floated="right" src={photo.url} />
-                <Card.Meta>Camera: {photo.camera}</Card.Meta>
-                <Card.Meta>Date: {photo.date}</Card.Meta>
-                <Card.Meta>Comment: {photo.comment} </Card.Meta>
-              </Card.Content>
-              <Card.Content extra>{editModal(photo)}</Card.Content>
-            </Card>
-          </Grid.Column>
-        ))}
-      </Grid.Row>
+      <Grid celled verticalAlign="middle" width={2}>
+        <Grid.Row>
+          {savedPhotos.map((photo) => (
+            <Grid.Column key={photo.id} width={8}>
+              <Card style={{ marginBottom: 5 }} raised key={photo.id}>
+                <Card.Description floated="right">
+                  {deleteModal(photo)}
+                </Card.Description>
+                <Card.Content>
+                  <Image size="small" floated="right" src={photo.url} />
+                  <Card.Meta>Camera: {photo.camera}</Card.Meta>
+                  <Card.Meta>Date: {photo.date}</Card.Meta>
+                  <Card.Content>Comment: {photo.comment} </Card.Content>
+                </Card.Content>
+                <Card.Content extra>{editModal(photo)}</Card.Content>
+              </Card>
+            </Grid.Column>
+          ))}
+        </Grid.Row>
+      </Grid>
     </>
   );
 };

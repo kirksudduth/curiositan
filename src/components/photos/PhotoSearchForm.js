@@ -75,7 +75,6 @@ const PhotoSearchForm = (props) => {
       </Modal.Actions>
     </Modal>
   );
-  console.log(cameras);
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
