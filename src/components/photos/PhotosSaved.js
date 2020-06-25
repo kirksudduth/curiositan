@@ -136,16 +136,16 @@ const PhotosSaved = () => {
   return (
     <>
       <Header textAlign="center" content="Saved Photos" />
-      <Grid centered width={2}>
-        <Grid.Row>
+      <Grid centered columns={2} verticalAlign="middle">
+        <Grid.Row centered columns={4}>
           {savedPhotos.map((photo) => (
-            <Grid.Column key={photo.id} width={8}>
+            <Grid.Column key={photo.id}>
               <Card style={{ marginBottom: 5 }} raised key={photo.id}>
                 <Card.Description floated="right">
                   {deleteModal(photo)}
                 </Card.Description>
                 <Card.Content>
-                  <Image size="small" floated="right" src={photo.url} />
+                  <Image rounded size="small" floated="right" src={photo.url} />
                   <Card.Meta>
                     <h4>{photo.camera}</h4>
                   </Card.Meta>

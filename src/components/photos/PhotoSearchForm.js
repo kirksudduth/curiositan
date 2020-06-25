@@ -11,6 +11,7 @@ import {
   Modal,
   Input,
   Popup,
+  Segment,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
@@ -51,9 +52,9 @@ const PhotoSearchForm = (props) => {
 
   const modalsRule = (obj) => (
     <Modal trigger={<Icon name="eye" />} closeIcon>
-      <Header content="BIG  PHOTO" />
+      <Header content="BLOWN UP" />
       <Modal.Content>
-        <Image size="large" src={obj.img_src} />
+        <Image size="huge" src={obj.img_src} />
       </Modal.Content>
       <Modal.Actions>
         <Form type="submit">
@@ -103,7 +104,7 @@ const PhotoSearchForm = (props) => {
 
   return (
     <>
-      <Grid verticalAlign="middle">
+      <Grid verticalAlign="middle" width="equal">
         <Grid.Column width={4}>
           <Header
             textAlign="center"
@@ -199,7 +200,12 @@ const PhotoSearchForm = (props) => {
                 <Grid.Column key={photo.id} width={4}>
                   <Card style={{ marginBottom: 10 }} raised key={photo.id}>
                     <Card.Content>
-                      <Image size="tiny" floated="right" src={photo.img_src} />
+                      <Image
+                        rounded
+                        size="tiny"
+                        floated="right"
+                        src={photo.img_src}
+                      />
                       <Card.Meta>
                         <h4>Camera:</h4> {photo.camera.full_name}
                       </Card.Meta>

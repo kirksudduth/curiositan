@@ -7,9 +7,9 @@
       "password": "12345"
     },
     {
-      "username": "2",
-      "email": "2@2",
-      "password": "2",
+      "username": "Marv",
+      "email": "marvin@themartian.com",
+      "password": "blowitup",
       "id": 2
     },
     {
@@ -27,7 +27,7 @@
   ],
   "photos": [
     {
-      "comment": "gotta get this stuff working!!!! PLZzzzzz44477",
+      "comment": "curiosity making sure its clean and ready to rove",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/ncam/NRB_644459716EDR_F0792640NCAM00117M_.JPG",
       "userId": 1,
       "camera": "NAVCAM",
@@ -51,7 +51,7 @@
       "id": 3
     },
     {
-      "comment": "TF???",
+      "comment": "looks like Curiosity was going in circles or something",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02782/opgs/edr/fcam/FRB_644459613EDR_F0792640FHAZ00341M_.JPG",
       "userId": 1,
       "camera": "FHAZ",
@@ -75,11 +75,11 @@
       "id": 9
     },
     {
-      "userId": 1,
-      "comment": "Cool pic, tho!",
-      "date": "2017-03-09",
-      "camera": "NAVCAM",
+      "comment": "maybe a next desktop background??",
       "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01632/opgs/edr/ncam/NLB_542390848EDR_F0611908NCAM00354M_.JPG",
+      "userId": 1,
+      "camera": "NAVCAM",
+      "date": "2017-03-09",
       "id": 10
     },
     {
@@ -177,6 +177,22 @@
       "camera": "MAST",
       "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00694/mcam/0694MR0029340070402229D01_DXXX.jpg",
       "id": 23
+    },
+    {
+      "userId": 2,
+      "comment": "OG red rocks",
+      "date": "2020-06-09",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02788/opgs/edr/ncam/NLB_645007664EDR_F0800902NCAM00312M_.JPG",
+      "id": 24
+    },
+    {
+      "comment": "stars from Mars?? -- think it's just dust actually",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00783/mcam/0783ML0033790010400396C00_DXXX.jpg",
+      "userId": 1,
+      "camera": "MAST",
+      "date": "2014-10-19",
+      "id": 25
     }
   ]
 }
