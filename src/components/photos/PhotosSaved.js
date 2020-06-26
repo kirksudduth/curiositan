@@ -152,7 +152,7 @@ const PhotosSaved = () => {
     <>
       <Header
         textAlign="center"
-        content={`:_*:*:S A V E D_'-'__'-'_P H O T O S:*:*_:`}
+        content={`:_*:*:||:S A V E D_'-'__'-'_P H O T O S:||:*:*_:`}
       />
       <Menu attached="top" tabular>
         <Menu.Item

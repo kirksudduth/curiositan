@@ -281,6 +281,14 @@
       "camera": "NAVCAM",
       "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02206/opgs/edr/ncam/NLA_593332695EDR_F0722464NCAM00371M_.JPG",
       "id": 36
+    },
+    {
+      "userId": 2,
+      "comment": "eerie eery erie eary eeree",
+      "date": "2020-06-25",
+      "camera": "NAVCAM",
+      "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02803/opgs/edr/ncam/NRB_646324407EDR_M0810424NCAM00580M_.JPG",
+      "id": 37
     }
   ]
 }
