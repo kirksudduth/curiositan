@@ -108,6 +108,7 @@ const PhotosSaved = () => {
 
   const deleteModal = (obj) => (
     <Modal
+      closeIcon
       trigger={
         <Icon
           name="trash alternate outline"
@@ -122,19 +123,26 @@ const PhotosSaved = () => {
       </Modal.Content>
       <Modal.Actions>
         <Button
+          animated="fade"
           id="delete"
           onClick={() => {
             deletePhoto(obj.id);
             handleDeleteClose();
           }}
         >
-          <Icon name="trash alternate outline" />
-          Delete
+          <Button.Content visible>
+            <Icon name="trash alternate outline" />
+            Delete
+          </Button.Content>
+          <Button.Content hidden>
+            <Icon name="trash" />
+            Deleted!
+          </Button.Content>
         </Button>
-        <Button id="keep" onClick={() => handleDeleteClose()}>
+        {/* <Button id="keep" onClick={() => handleDeleteClose()}>
           <Icon name="archive" />
           Keep
-        </Button>
+        </Button> */}
       </Modal.Actions>
     </Modal>
   );

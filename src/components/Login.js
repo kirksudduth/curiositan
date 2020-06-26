@@ -47,7 +47,7 @@ const Login = (props) => {
       }
     });
   };
-
+  console.log(props);
   return (
     <>
       <Header

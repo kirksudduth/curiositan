@@ -109,7 +109,7 @@ const PhotoSearchForm = (props) => {
     } else if (camera === "MAHLI") {
       return "Mars Hand Lens Imager -- takes microscopic pictures of Mars stuff, yo!";
     } else if (camera === "CHEMCAM") {
-      return "Chemistry and Camera Complex -- a microscope takes pictures of Martian terrain after its lazer hand blasts it.";
+      return "Chemistry and Camera Complex -- a microscope takes pictures of Martian terrain after its laser hand blasts it.";
     } else if (camera === "MARDI") {
       return "Mars Descent Imager -- mainly used for Curiosity's descent to Mars. Took hella pics.";
     }

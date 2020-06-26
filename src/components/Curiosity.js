@@ -4,6 +4,7 @@ import "../Curiosity.css";
 import ApplicationViews from "./ApplicationViews";
 import NavBar from "./NavBar";
 import Login from "./Login";
+import NewUser from "./NewUser";
 
 const Curiosity = (props) => {
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -20,7 +21,7 @@ const Curiosity = (props) => {
     setHasUser(isAuthenticated());
     props.history.push("/");
   };
-
+  console.log(props);
   return (
     <>
       {hasUser ? (
@@ -33,9 +34,13 @@ const Curiosity = (props) => {
             {...props}
           />
         </>
-      ) : (
+      ) : null}
+      {!hasUser && props.location.pathname === "/" ? (
         <Login setUser={setUser} hasUser={hasUser} />
-      )}
+      ) : null}
+      {!hasUser && props.location.pathname === "/new_user" ? (
+        <NewUser setUser={setUser} hasUser={hasUser} />
+      ) : null}
     </>
   );
 };

@@ -13,38 +13,15 @@ const ApplicationViews = (props) => {
   const setCredentials = props.setCredentials;
   // =====================================================
   // ******  NEW USER STATE STUFF  ******
-  const [newUser, setNewUser] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const handleNewUserFieldChange = (evt) => {
-    const stateToChange = { ...newUser };
-    const otherStateToChange = { ...credentials };
-    otherStateToChange[evt.target.id] = evt.target.value;
-    stateToChange[evt.target.id] = evt.target.value;
-    setNewUser(stateToChange);
-    setCredentials(otherStateToChange);
-  };
-
-  const handleNewUserLogin = () => {
-    setNewUser();
-    DataManager.addNewUser(newUser);
-    setUser(credentials);
-    props.history.push("/photos_search");
-  };
 
   return (
     <>
-      <Route
+      {/* <Route
         exact
         path="/new_user"
         render={(props) => {
           return (
             <NewUser
-              handleNewUserLogin={handleNewUserLogin}
-              newUser={newUser}
               handleNewUserFieldChange={handleNewUserFieldChange}
               credentials={credentials}
               handleLogin={handleLogin}
@@ -54,23 +31,23 @@ const ApplicationViews = (props) => {
             />
           );
         }}
-      />
-      {/* <Route
-        exact
-        path="/"
-        render={(props) => {
-          return (
-            <Login
-              credentials={credentials}
-              userLogin={userLogin}
-              handleFieldChange={handleFieldChange}
-              setUser={setUser}
-              hasUser={hasUser}
-              {...props}
-            />
-          );
-        }}
       /> */}
+      {/* <Route
+      exact
+      path="/"
+      render={(props) => {
+        return (
+          <Login
+            credentials={credentials}
+            userLogin={userLogin}
+            handleFieldChange={handleFieldChange}
+            setUser={setUser}
+            hasUser={hasUser}
+            {...props}
+          />
+        );
+      }}
+    /> */}
       <Route
         exact
         path="/photos_search"
