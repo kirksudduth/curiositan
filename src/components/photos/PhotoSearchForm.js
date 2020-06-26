@@ -74,7 +74,7 @@ const PhotoSearchForm = (props) => {
             style={{ marginBottom: 10 }}
           />
           <Button
-            animated
+            animated="fade"
             onClick={() => makePhotoWithComment(obj)}
             style={{ marginBottom: 10 }}
           >
@@ -105,7 +105,7 @@ const PhotoSearchForm = (props) => {
     } else if (camera === "MAST") {
       return "Mast Cameras -- take true-color images. Feel like some of the better pics are taken by these cameras.";
     } else if (camera === "NAVCAM") {
-      return "Navigation Cameras -- black and white cameras helps Curiosity plan its next moves and scope out terrain.";
+      return "Navigation Cameras -- black and white cameras help Curiosity plan its next moves and scope out terrain.";
     } else if (camera === "MAHLI") {
       return "Mars Hand Lens Imager -- takes microscopic pictures of Mars stuff, yo!";
     } else if (camera === "CHEMCAM") {
@@ -162,7 +162,7 @@ const PhotoSearchForm = (props) => {
               <label>Camera Type:</label>
               <Grid.Row>
                 {cameras.map((camera) => (
-                  <Grid.Column width={2}>
+                  <Grid.Column key={camera} width={2}>
                     <Popup
                       key={camera}
                       content={camerasPopupContent(camera)}

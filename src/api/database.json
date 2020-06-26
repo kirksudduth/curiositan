@@ -219,11 +219,11 @@
       "id": 28
     },
     {
-      "userId": 1,
-      "comment": "Sandy ridge",
-      "date": "2019-11-24",
-      "camera": "MAST",
+      "comment": "Sandy place on Mars",
       "url": "https://mars.nasa.gov/msl-raw-images/msss/02595/mcam/2595MR0136450211100827C00_DXXX.jpg",
+      "userId": 1,
+      "camera": "MAST",
+      "date": "2019-11-24",
       "id": 29
     },
     {
@@ -235,11 +235,11 @@
       "id": 30
     },
     {
-      "userId": 1,
-      "comment": "Curiosity, rock crawling!",
-      "date": "2020-06-24",
-      "camera": "NAVCAM",
+      "comment": "Curiosity, rock crawling! doin it's thing!",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646247154EDR_F0810424NCAM00354M_.JPG",
+      "userId": 1,
+      "camera": "NAVCAM",
+      "date": "2020-06-24",
       "id": 31
     },
     {
@@ -273,6 +273,14 @@
       "camera": "NAVCAM",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02802/opgs/edr/ncam/NLB_646247404EDR_S0810424NCAM00276M_.JPG",
       "id": 35
+    },
+    {
+      "userId": 1,
+      "comment": "Fun stuff, when Curiosity is working",
+      "date": "2018-10-20",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02206/opgs/edr/ncam/NLA_593332695EDR_F0722464NCAM00371M_.JPG",
+      "id": 36
     }
   ]
 }

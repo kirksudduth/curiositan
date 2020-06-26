@@ -11,6 +11,8 @@ import {
   Input,
   Form,
   Button,
+  Menu,
+  Segment,
 } from "semantic-ui-react";
 
 const PhotosSaved = () => {
@@ -63,7 +65,6 @@ const PhotosSaved = () => {
     <>
       <Modal
         trigger={<Icon id={obj.id} name="edit outline" onClick={handleOpen} />}
-        // open={modalOpen}
         onClose={handleClose}
       >
         <Header content="Change how you remember this." />
@@ -138,14 +139,59 @@ const PhotosSaved = () => {
     </Modal>
   );
 
+  const [activeTab, setActiveTab] = useState({ name: "Saved Photos" });
+
+  const changeTab = (event) => {
+    event.persist();
+    const stateToChange = { ...activeTab };
+    stateToChange.name = event.target.innerText;
+    setActiveTab(stateToChange);
+  };
+
   return (
     <>
-      <Header textAlign="center" content="Saved Photos" />
-      <Grid centered columns={2} verticalAlign="middle">
+      <Header
+        textAlign="center"
+        content={`:_*:*:S A V E D_'-'__'-'_P H O T O S:*:*_:`}
+      />
+      <Menu attached="top" tabular>
+        <Menu.Item
+          active={activeTab.name === "Saved Photos"}
+          name="Saved Photos"
+          onClick={(evt) => {
+            changeTab(evt);
+            getSavedPhotos(userId).then((result) =>
+              setSavedPhotos(result.photos)
+            );
+          }}
+        />
+        <Menu.Item
+          name="Filter By Camera"
+          active={activeTab.name === "Filter By Camera"}
+          onClick={(evt) => {
+            setSavedPhotos([]);
+            changeTab(evt);
+          }}
+        />
+        <Menu.Item
+          name="Filter By Date"
+          active={activeTab.name === "Filter By Date"}
+          onClick={(evt) => {
+            setSavedPhotos([]);
+            changeTab(evt);
+          }}
+        />
+      </Menu>
+      {/* <Segment attached="bottom"> */}
+      <Grid centered attached="bottom" columns={2} verticalAlign="middle">
         <Grid.Row centered columns={4}>
           {savedPhotos.reverse().map((photo) => (
             <Grid.Column key={photo.id}>
-              <Card style={{ marginBottom: 5 }} raised key={photo.id}>
+              <Card
+                style={{ marginBottom: 10, marginTop: 10 }}
+                raised
+                key={photo.id}
+              >
                 <Card.Description floated="right">
                   {deleteModal(photo)}
                 </Card.Description>
@@ -165,6 +211,7 @@ const PhotosSaved = () => {
           ))}
         </Grid.Row>
       </Grid>
+      {/* </Segment> */}
     </>
   );
 };
