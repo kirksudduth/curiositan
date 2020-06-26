@@ -175,6 +175,8 @@ const PhotoSearchForm = (props) => {
                           onChange={handleRadioChange}
                         />
                       }
+                      position="top center"
+                      basic
                     />
                   </Grid.Column>
                 ))}
@@ -198,8 +200,13 @@ const PhotoSearchForm = (props) => {
         <Grid.Column width={4}>
           <Message style={{ align: "center" }}>
             Want to see the latest photos Curiosity has taken?{" "}
-            <Button fluid onClick={() => clearPhotosAndGetLatest()}>
-              Click Here!
+            <Button
+              fluid
+              animated="fade"
+              onClick={() => clearPhotosAndGetLatest()}
+            >
+              <Button.Content visible>Click Here!</Button.Content>
+              <Button.Content hidden>Latest Mars pics!</Button.Content>
             </Button>
           </Message>
         </Grid.Column>

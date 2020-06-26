@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Header, Icon } from "semantic-ui-react";
+import { Menu, Header, Icon, Segment, Label } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -15,12 +15,17 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Header
-        content="Red Planet: A Curiosity"
-        block
-        textAlign="center"
-        as="h1"
-      />
+      <Segment clearing>
+        <Header floated="left" as="h1">
+          Red Planet: A Curiosity
+        </Header>
+        {/* <Header as="h2" floated="right">
+          <Label as="a" color="red">
+            <Icon name="user" />
+            User
+          </Label>
+        </Header> */}
+      </Segment>
       <Menu color="brown" secondary pointing icon="labeled">
         <NavLink to="/photos_search">
           <Menu.Item
