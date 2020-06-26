@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "username": "kirk",
-      "email": "kirk@kirk.com",
+      "username": "CuriousP",
+      "email": "cp@pcurious.com",
       "password": "12345"
     },
     {
@@ -19,10 +19,22 @@
       "id": 3
     },
     {
-      "username": "1",
+      "username": "MartianallyImpressed",
       "email": "1@2.com",
       "password": "1",
       "id": 4
+    },
+    {
+      "username": "DustySpringfield",
+      "email": "dusty@dusty.com",
+      "password": "dusty",
+      "id": 5
+    },
+    {
+      "username": "MintBoi319",
+      "email": "mint@mint.com",
+      "password": "mint",
+      "id": 6
     }
   ],
   "photos": [
@@ -289,6 +301,78 @@
       "camera": "NAVCAM",
       "url": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/02803/opgs/edr/ncam/NRB_646324407EDR_M0810424NCAM00580M_.JPG",
       "id": 37
+    },
+    {
+      "userId": 6,
+      "comment": "Where the tumbleweeds at?",
+      "date": "2012-09-23",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00047/opgs/edr/ncam/NLA_401670375EDR_D0042100NCAM00520M_.JPG",
+      "id": 38
+    },
+    {
+      "userId": 6,
+      "comment": "When's the last time something rolled across that dirt?",
+      "date": "2012-09-23",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00047/opgs/edr/ncam/NLA_401670786EDR_D0042100NCAM00519M_.JPG",
+      "id": 39
+    },
+    {
+      "userId": 6,
+      "comment": "We going that way??",
+      "date": "2012-09-23",
+      "camera": "NAVCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/00047/opgs/edr/ncam/NLA_401670569EDR_D0042100NCAM00520M_.JPG",
+      "id": 40
+    },
+    {
+      "userId": 6,
+      "comment": "Laser tests maybe?",
+      "date": "2012-09-23",
+      "camera": "CHEMCAM",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/ods/surface/sol/00047/soas/rdr/ccam/CR0_401669791PRC_F0042100CCAM01047L1.PNG",
+      "id": 41
+    },
+    {
+      "userId": 6,
+      "comment": "Microscopic Mars Image!!!!",
+      "date": "2012-09-23",
+      "camera": "MAHLI",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00047/mhli/0047MH0000110050100222C00_DXXX.jpg",
+      "id": 42
+    },
+    {
+      "userId": 6,
+      "comment": "2.5 mos on Mars and the hardware is not looking to dusty",
+      "date": "2012-10-17",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00071/mcam/0071ML0004230000102617E01_DXXX.jpg",
+      "id": 43
+    },
+    {
+      "userId": 6,
+      "comment": "WOW. there was definitely life here",
+      "date": "2012-10-17",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00071/mcam/0071ML0005000000102600D01_DXXX.jpg",
+      "id": 44
+    },
+    {
+      "userId": 6,
+      "comment": "Mars rock shelves",
+      "date": "2012-10-17",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/00071/mcam/0071MR0004970360103535D01_DXXX.jpg",
+      "id": 45
+    },
+    {
+      "userId": 3,
+      "comment": "rocks covered in Mars dust",
+      "date": "2016-11-01",
+      "camera": "MAST",
+      "url": "http://mars.jpl.nasa.gov/msl-raw-images/msss/01507/mcam/1507ML0076500130604066E01_DXXX.jpg",
+      "id": 46
     }
   ]
 }

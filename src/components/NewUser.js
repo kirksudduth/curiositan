@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Header,
   Grid,
@@ -7,10 +7,37 @@ import {
   Checkbox,
   Button,
 } from "semantic-ui-react";
+import DataManager from "../modules/DataManager";
+import { withRouter } from "react-router-dom";
 
 const NewUser = (props) => {
-  const handleNewUserFieldChange = props.handleNewUserFieldChange;
-  const handleNewUserLogin = props.handleNewUserLogin;
+  const [credentials, setCredentials] = useState({});
+  const setUser = props.setUser;
+
+  const [newUser, setNewUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleNewUserFieldChange = (evt) => {
+    const stateToChange = { ...newUser };
+    stateToChange[evt.target.id] = evt.target.value;
+    setNewUser(stateToChange);
+  };
+
+  const handleNewUserLogin = () => {
+    DataManager.addNewUser(newUser);
+    debugger;
+    DataManager.getUserByEmail(newUser.email).then((user) => {
+      const stateToChange = { ...credentials };
+      stateToChange.id = user[0].id;
+      stateToChange.username = user[0].username;
+      setCredentials(stateToChange.id);
+      setUser(stateToChange.id);
+      props.history.push("/photos_search");
+    });
+  };
 
   return (
     <>
@@ -81,4 +108,4 @@ const NewUser = (props) => {
   );
 };
 
-export default NewUser;
+export default withRouter(NewUser);
