@@ -65,6 +65,7 @@ const PhotosSaved = () => {
       <Modal
         trigger={<Icon id={obj.id} name="edit outline" onClick={handleOpen} />}
         onClose={handleClose}
+        closeIcon
       >
         <Header>{user.username} -- change how you remember this.</Header>
         <Modal.Content>
