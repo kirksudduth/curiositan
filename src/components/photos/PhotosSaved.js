@@ -12,7 +12,6 @@ import {
   Form,
   Button,
   Menu,
-  Segment,
 } from "semantic-ui-react";
 
 const PhotosSaved = () => {
@@ -67,7 +66,7 @@ const PhotosSaved = () => {
         trigger={<Icon id={obj.id} name="edit outline" onClick={handleOpen} />}
         onClose={handleClose}
       >
-        <Header content="Change how you remember this." />
+        <Header>{user.username} -- change how you remember this.</Header>
         <Modal.Content>
           <Image size="huge" src={obj.url} />
         </Modal.Content>

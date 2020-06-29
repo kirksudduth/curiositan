@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Message,
   Header,
@@ -119,7 +119,7 @@ const PhotoSearchForm = (props) => {
     setRoverPhotos();
     getLatestPhotos().then((obj) => setLatestPhotos(obj.latest_photos));
   };
-  // useEffect(() => {}, [latestPhotos]);
+
   return (
     <>
       <Grid verticalAlign="middle" width="equal">
