@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Grid } from "semantic-ui-react";
-import DataManager from "../../modules/DataManager";
 import PhotoSearchForm from "../photos/PhotoSearchForm";
 
 const PhotoSearchList = (props) => {

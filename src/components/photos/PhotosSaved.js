@@ -17,7 +17,7 @@ import {
 const PhotosSaved = () => {
   const putEditedPhoto = DataManager.putEditedPhoto;
   const deletePhoto = DataManager.deletePhoto;
-  const getSavedPhotos = DataManager.getSavedPhotos;
+  const getUserWithSavedPhotos = DataManager.getUserWithSavedPhotos;
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteModalState, setDeleteModalState] = useState(false);
@@ -37,10 +37,14 @@ const PhotosSaved = () => {
   const handleDeleteOpen = () => setDeleteModalState(true);
   const handleDeleteClose = () => setDeleteModalState(false);
   useEffect(() => {
-    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
+    getUserWithSavedPhotos(user.id).then((result) =>
+      setSavedPhotos(result.photos)
+    );
   }, [modalOpen]);
   useEffect(() => {
-    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
+    getUserWithSavedPhotos(user.id).then((result) =>
+      setSavedPhotos(result.photos)
+    );
   }, [deleteModalState]);
 
   const handleFieldChange = (evt) => {
@@ -87,7 +91,7 @@ const PhotosSaved = () => {
                 animated="fade"
                 onClick={() => {
                   editedCommentPhoto(obj);
-                  getSavedPhotos(user.id);
+                  getUserWithSavedPhotos(user.id);
                   handleClose();
                 }}
                 style={{ marginBottom: 10 }}
@@ -158,14 +162,14 @@ const PhotosSaved = () => {
 
   return (
     <>
-      <Header textAlign="center" content={`S A V E D _ P H O T O S`} />
+      <Header textAlign="center" content={`SAVED P H O T O S`} />
       <Menu attached="top" tabular>
         <Menu.Item
           active={activeTab.name === "Saved Photos"}
           name="Saved Photos"
           onClick={(evt) => {
             changeTab(evt);
-            getSavedPhotos(user.id).then((result) =>
+            getUserWithSavedPhotos(user.id).then((result) =>
               setSavedPhotos(result.photos)
             );
           }}

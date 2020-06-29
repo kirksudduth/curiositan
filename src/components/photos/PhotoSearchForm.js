@@ -175,7 +175,7 @@ const PhotoSearchForm = (props) => {
                           onChange={handleRadioChange}
                         />
                       }
-                      position="top center"
+                      position="top left"
                       basic
                     />
                   </Grid.Column>
