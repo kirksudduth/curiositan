@@ -23,7 +23,7 @@ const Login = (props) => {
   };
 
   const handleLogin = () => {
-    setUser(credentials.id);
+    setUser(credentials);
     props.history.push("/photos_search");
   };
 

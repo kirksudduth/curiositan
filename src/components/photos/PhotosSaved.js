@@ -31,17 +31,17 @@ const PhotosSaved = () => {
     id: "",
   });
 
-  const userId = JSON.parse(sessionStorage.credentials);
+  const user = JSON.parse(sessionStorage.credentials);
 
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
   const handleDeleteOpen = () => setDeleteModalState(true);
   const handleDeleteClose = () => setDeleteModalState(false);
   useEffect(() => {
-    getSavedPhotos(userId).then((result) => setSavedPhotos(result.photos));
+    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
   }, [modalOpen]);
   useEffect(() => {
-    getSavedPhotos(userId).then((result) => setSavedPhotos(result.photos));
+    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
   }, [deleteModalState]);
 
   const handleFieldChange = (evt) => {
@@ -54,7 +54,7 @@ const PhotosSaved = () => {
     const stateToChange = { ...editedPhoto };
     stateToChange.date = obj.date;
     stateToChange.camera = obj.camera;
-    stateToChange.userId = userId;
+    stateToChange.userId = user.id;
     stateToChange.url = obj.url;
     stateToChange.id = obj.id;
     setEditedPhoto(stateToChange);
@@ -87,7 +87,7 @@ const PhotosSaved = () => {
                 animated="fade"
                 onClick={() => {
                   editedCommentPhoto(obj);
-                  getSavedPhotos(userId);
+                  getSavedPhotos(user.id);
                   handleClose();
                 }}
                 style={{ marginBottom: 10 }}
@@ -158,17 +158,14 @@ const PhotosSaved = () => {
 
   return (
     <>
-      <Header
-        textAlign="center"
-        content={`:_*:*:||:S A V E D_'-'__'-'_P H O T O S:||:*:*_:`}
-      />
+      <Header textAlign="center" content={`S A V E D _ P H O T O S`} />
       <Menu attached="top" tabular>
         <Menu.Item
           active={activeTab.name === "Saved Photos"}
           name="Saved Photos"
           onClick={(evt) => {
             changeTab(evt);
-            getSavedPhotos(userId).then((result) =>
+            getSavedPhotos(user.id).then((result) =>
               setSavedPhotos(result.photos)
             );
           }}
@@ -190,7 +187,6 @@ const PhotosSaved = () => {
           }}
         />
       </Menu>
-      {/* <Segment attached="bottom"> */}
       <Grid centered attached="bottom" columns={2} verticalAlign="middle">
         <Grid.Row centered columns={4}>
           {savedPhotos.reverse().map((photo) => (
@@ -219,7 +215,6 @@ const PhotosSaved = () => {
           ))}
         </Grid.Row>
       </Grid>
-      {/* </Segment> */}
     </>
   );
 };
