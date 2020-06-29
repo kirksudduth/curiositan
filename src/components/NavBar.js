@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Header, Icon, Segment, Label } from "semantic-ui-react";
+import { Menu, Header, Icon, Segment, Label, Image } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -19,7 +19,13 @@ const NavBar = (props) => {
     <>
       <Segment clearing>
         <Header floated="left" as="h1">
-          Red Planet: A Curiosity
+          <Image
+            src={require("./curiositanIcon.png")}
+            alt="Curiositan"
+            size="medium"
+            // circular
+          />
+          Curiositan
         </Header>
         <Header as="h1" floated="right">
           <Label as="a" color="brown">

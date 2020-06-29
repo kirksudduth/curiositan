@@ -23,9 +23,9 @@ const PhotoSearchForm = (props) => {
 
   const [roverPhotos, setRoverPhotos] = useState([]);
   const getRoverPhotos = (date, camera) => {
-    setLatestPhotos();
-    DataManager.getRoverPhotos(date, camera).then((photosArray) =>
-      setRoverPhotos(photosArray.photos)
+    setLatestPhotos([]);
+    DataManager.getRoverPhotos(date, camera).then((results) =>
+      setRoverPhotos(results.photos)
     );
   };
   const [cameras, setCameras] = useState([]);
@@ -211,52 +211,48 @@ const PhotoSearchForm = (props) => {
           </Message>
         </Grid.Column>
         <Grid.Row>
-          {!roverPhotos
-            ? []
-            : roverPhotos.map((photo) => (
-                <Grid.Column key={photo.id} width={4}>
-                  <Card style={{ marginBottom: 10 }} raised key={photo.id}>
-                    <Card.Content>
-                      <Image
-                        rounded
-                        size="tiny"
-                        floated="right"
-                        src={photo.img_src}
-                      />
-                      <Card.Meta>
-                        <h4>Camera:</h4> {photo.camera.full_name}
-                      </Card.Meta>
-                      <Card.Meta>
-                        <h4>Date:</h4> {photo.earth_date}
-                      </Card.Meta>
-                    </Card.Content>
-                    <Card.Content extra>{modalsRule(photo)}</Card.Content>
-                  </Card>
-                </Grid.Column>
-              ))}
-          {!latestPhotos
-            ? []
-            : latestPhotos.map((photo) => (
-                <Grid.Column key={photo.id} width={4}>
-                  <Card style={{ marginBottom: 10 }} raised key={photo.id}>
-                    <Card.Content>
-                      <Image
-                        rounded
-                        size="tiny"
-                        floated="right"
-                        src={photo.img_src}
-                      />
-                      <Card.Meta>
-                        <h4>Camera:</h4> {photo.camera.full_name}
-                      </Card.Meta>
-                      <Card.Meta>
-                        <h4>Date:</h4> {photo.earth_date}
-                      </Card.Meta>
-                    </Card.Content>
-                    <Card.Content extra>{modalsRule(photo)}</Card.Content>
-                  </Card>
-                </Grid.Column>
-              ))}
+          {roverPhotos.map((photo) => (
+            <Grid.Column key={photo.id} width={4}>
+              <Card style={{ marginBottom: 10 }} raised key={photo.id}>
+                <Card.Content>
+                  <Image
+                    rounded
+                    size="tiny"
+                    floated="right"
+                    src={photo.img_src}
+                  />
+                  <Card.Meta>
+                    <h4>Camera:</h4> {photo.camera.full_name}
+                  </Card.Meta>
+                  <Card.Meta>
+                    <h4>Date:</h4> {photo.earth_date}
+                  </Card.Meta>
+                </Card.Content>
+                <Card.Content extra>{modalsRule(photo)}</Card.Content>
+              </Card>
+            </Grid.Column>
+          ))}
+          {latestPhotos.map((photo) => (
+            <Grid.Column key={photo.id} width={4}>
+              <Card style={{ marginBottom: 10 }} raised key={photo.id}>
+                <Card.Content>
+                  <Image
+                    rounded
+                    size="tiny"
+                    floated="right"
+                    src={photo.img_src}
+                  />
+                  <Card.Meta>
+                    <h4>Camera:</h4> {photo.camera.full_name}
+                  </Card.Meta>
+                  <Card.Meta>
+                    <h4>Date:</h4> {photo.earth_date}
+                  </Card.Meta>
+                </Card.Content>
+                <Card.Content extra>{modalsRule(photo)}</Card.Content>
+              </Card>
+            </Grid.Column>
+          ))}
         </Grid.Row>
       </Grid>
     </>
