@@ -21,7 +21,6 @@ const Curiosity = (props) => {
     setHasUser(isAuthenticated());
     props.history.push("/");
   };
-  console.log(props);
   return (
     <>
       {hasUser ? (

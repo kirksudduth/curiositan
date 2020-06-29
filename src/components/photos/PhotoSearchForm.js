@@ -37,13 +37,13 @@ const PhotoSearchForm = (props) => {
     url: "",
   });
   const [latestPhotos, setLatestPhotos] = useState([]);
-  const userId = JSON.parse(sessionStorage.credentials);
+  const user = JSON.parse(sessionStorage.credentials);
 
   const makePhotoWithComment = (obj) => {
     const stateToChange = { ...savedPhoto };
     stateToChange.date = obj.earth_date;
     stateToChange.camera = obj.camera.name;
-    stateToChange.userId = userId;
+    stateToChange.userId = user.id;
     stateToChange.url = obj.img_src;
     setSavedPhoto(stateToChange);
     DataManager.postSavedPhoto(stateToChange);

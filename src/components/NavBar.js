@@ -13,18 +13,20 @@ const NavBar = (props) => {
     setActiveItem(stateToChange);
   };
 
+  const user = JSON.parse(sessionStorage.credentials);
+
   return (
     <>
       <Segment clearing>
         <Header floated="left" as="h1">
           Red Planet: A Curiosity
         </Header>
-        {/* <Header as="h2" floated="right">
-          <Label as="a" color="red">
-            <Icon name="user" />
-            User
+        <Header as="h1" floated="right">
+          <Label as="a" color="brown">
+            <Icon name="user circle" />
+            {user.username}
           </Label>
-        </Header> */}
+        </Header>
       </Segment>
       <Menu color="brown" secondary pointing icon="labeled">
         <NavLink to="/photos_search">
