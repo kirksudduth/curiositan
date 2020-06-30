@@ -13,11 +13,12 @@ import {
   Button,
   Menu,
 } from "semantic-ui-react";
+import PhotoFilterCamera from "../photos/PhotoFilterCamera";
 
 const PhotosSaved = () => {
   const putEditedPhoto = DataManager.putEditedPhoto;
   const deletePhoto = DataManager.deletePhoto;
-  const getSavedPhotos = DataManager.getSavedPhotos;
+  const getUserWithSavedPhotos = DataManager.getUserWithSavedPhotos;
   const [savedPhotos, setSavedPhotos] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [deleteModalState, setDeleteModalState] = useState(false);
@@ -37,10 +38,14 @@ const PhotosSaved = () => {
   const handleDeleteOpen = () => setDeleteModalState(true);
   const handleDeleteClose = () => setDeleteModalState(false);
   useEffect(() => {
-    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
+    getUserWithSavedPhotos(user.id).then((result) =>
+      setSavedPhotos(result.photos)
+    );
   }, [modalOpen]);
   useEffect(() => {
-    getSavedPhotos(user.id).then((result) => setSavedPhotos(result.photos));
+    getUserWithSavedPhotos(user.id).then((result) =>
+      setSavedPhotos(result.photos)
+    );
   }, [deleteModalState]);
 
   const handleFieldChange = (evt) => {
@@ -87,7 +92,7 @@ const PhotosSaved = () => {
                 animated="fade"
                 onClick={() => {
                   editedCommentPhoto(obj);
-                  getSavedPhotos(user.id);
+                  getUserWithSavedPhotos(user.id);
                   handleClose();
                 }}
                 style={{ marginBottom: 10 }}
@@ -158,14 +163,14 @@ const PhotosSaved = () => {
 
   return (
     <>
-      <Header textAlign="center" content={`S A V E D _ P H O T O S`} />
+      <Header textAlign="center" content={`SAVED PHOTOS`} />
       <Menu attached="top" tabular>
         <Menu.Item
           active={activeTab.name === "Saved Photos"}
           name="Saved Photos"
           onClick={(evt) => {
             changeTab(evt);
-            getSavedPhotos(user.id).then((result) =>
+            getUserWithSavedPhotos(user.id).then((result) =>
               setSavedPhotos(result.photos)
             );
           }}
@@ -176,6 +181,7 @@ const PhotosSaved = () => {
           onClick={(evt) => {
             setSavedPhotos([]);
             changeTab(evt);
+            return <PhotoFilterCamera />;
           }}
         />
         <Menu.Item
@@ -189,30 +195,43 @@ const PhotosSaved = () => {
       </Menu>
       <Grid centered attached="bottom" columns={2} verticalAlign="middle">
         <Grid.Row centered columns={4}>
-          {savedPhotos.reverse().map((photo) => (
-            <Grid.Column key={photo.id}>
-              <Card
-                style={{ marginBottom: 10, marginTop: 10 }}
-                raised
-                key={photo.id}
-              >
-                <Card.Description floated="right">
-                  {deleteModal(photo)}
-                </Card.Description>
-                <Card.Content>
-                  <Image rounded size="small" floated="right" src={photo.url} />
-                  <Card.Meta>
-                    <h4>{photo.camera}</h4>
-                  </Card.Meta>
-                  <Card.Meta>
-                    <h4>{photo.date}</h4>
-                  </Card.Meta>
-                  <Card.Content>Comment: {photo.comment} </Card.Content>
-                </Card.Content>
-                <Card.Content extra>{editModal(photo)}</Card.Content>
-              </Card>
-            </Grid.Column>
-          ))}
+          {activeTab.name === "Saved Photos"
+            ? savedPhotos.reverse().map((photo) => (
+                <Grid.Column key={photo.id}>
+                  <Card
+                    style={{ marginBottom: 10, marginTop: 10 }}
+                    raised
+                    key={photo.id}
+                  >
+                    <Card.Description floated="right">
+                      {deleteModal(photo)}
+                    </Card.Description>
+                    <Card.Content>
+                      <Image
+                        rounded
+                        size="small"
+                        floated="right"
+                        src={photo.url}
+                      />
+                      <Card.Meta>
+                        <h4>{photo.camera}</h4>
+                      </Card.Meta>
+                      <Card.Meta>
+                        <h4>{photo.date}</h4>
+                      </Card.Meta>
+                      <Card.Content>Comment: {photo.comment} </Card.Content>
+                    </Card.Content>
+                    <Card.Content extra>{editModal(photo)}</Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))
+            : null}
+          {activeTab.name === "Filter By Camera" ? (
+            <PhotoFilterCamera
+              editModal={editModal}
+              deleteModal={deleteModal}
+            />
+          ) : null}
         </Grid.Row>
       </Grid>
     </>

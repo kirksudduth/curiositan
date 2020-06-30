@@ -34,7 +34,7 @@ const NewUser = (props) => {
       stateToChange.id = user[0].id;
       stateToChange.username = user[0].username;
       setCredentials(stateToChange.id);
-      setUser(stateToChange.id);
+      setUser(stateToChange);
       props.history.push("/photos_search");
     });
   };

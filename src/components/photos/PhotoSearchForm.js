@@ -116,7 +116,7 @@ const PhotoSearchForm = (props) => {
   };
 
   const clearPhotosAndGetLatest = () => {
-    setRoverPhotos();
+    setRoverPhotos([]);
     getLatestPhotos().then((obj) => setLatestPhotos(obj.latest_photos));
   };
 
@@ -175,7 +175,7 @@ const PhotoSearchForm = (props) => {
                           onChange={handleRadioChange}
                         />
                       }
-                      position="top center"
+                      position="top left"
                       basic
                     />
                   </Grid.Column>

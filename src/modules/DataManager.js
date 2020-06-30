@@ -54,7 +54,7 @@ export default {
       result.json()
     );
   },
-  getSavedPhotos(userId) {
+  getUserWithSavedPhotos(userId) {
     return fetch(`${localURL}/users/${userId}?_embed=photos`).then((data) =>
       data.json()
     );
