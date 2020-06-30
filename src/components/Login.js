@@ -51,9 +51,9 @@ const Login = (props) => {
   return (
     <>
       <Header
-        content="Red Planet: A Curiosity"
+        style={{ background: "#D1A482" }}
+        content="Curiositan"
         block
-        textAlign="center"
         as="h1"
       />
       <Grid centered columns={2}>

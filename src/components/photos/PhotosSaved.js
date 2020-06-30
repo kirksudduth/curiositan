@@ -14,6 +14,7 @@ import {
   Menu,
 } from "semantic-ui-react";
 import PhotoFilterCamera from "../photos/PhotoFilterCamera";
+import PhotoFilterDate from "../photos/PhotoFilterDate";
 
 const PhotosSaved = () => {
   const putEditedPhoto = DataManager.putEditedPhoto;
@@ -116,6 +117,7 @@ const PhotosSaved = () => {
       closeIcon
       trigger={
         <Icon
+          style={{ marginLeft: 10 }}
           name="trash alternate outline"
           onClick={handleDeleteOpen}
           size="small"
@@ -185,8 +187,8 @@ const PhotosSaved = () => {
           }}
         />
         <Menu.Item
-          name="Filter By Date"
-          active={activeTab.name === "Filter By Date"}
+          name="Sort By Date"
+          active={activeTab.name === "Sort By Date"}
           onClick={(evt) => {
             setSavedPhotos([]);
             changeTab(evt);
@@ -199,14 +201,22 @@ const PhotosSaved = () => {
             ? savedPhotos.reverse().map((photo) => (
                 <Grid.Column key={photo.id}>
                   <Card
-                    style={{ marginBottom: 10, marginTop: 10 }}
+                    style={{
+                      marginBottom: 10,
+                      marginTop: 10,
+                      // background: "#D1A482",
+                    }}
                     raised
                     key={photo.id}
                   >
-                    <Card.Description floated="right">
+                    <Card.Description
+                      style={{
+                        background: "#D1A482",
+                      }}
+                    >
                       {deleteModal(photo)}
                     </Card.Description>
-                    <Card.Content>
+                    <Card.Content style={{ background: "#aab3bc" }}>
                       <Image
                         rounded
                         size="small"
@@ -221,13 +231,27 @@ const PhotosSaved = () => {
                       </Card.Meta>
                       <Card.Content>Comment: {photo.comment} </Card.Content>
                     </Card.Content>
-                    <Card.Content extra>{editModal(photo)}</Card.Content>
+                    <Card.Content
+                      style={{
+                        background: "#D1A482",
+                      }}
+                      extra
+                    >
+                      {editModal(photo)}
+                    </Card.Content>
                   </Card>
                 </Grid.Column>
               ))
             : null}
           {activeTab.name === "Filter By Camera" ? (
             <PhotoFilterCamera
+              editModal={editModal}
+              deleteModal={deleteModal}
+            />
+          ) : null}
+          {activeTab.name === "Sort By Date" ? (
+            <PhotoFilterDate
+              getUserWithSavedPhotos={getUserWithSavedPhotos}
               editModal={editModal}
               deleteModal={deleteModal}
             />
