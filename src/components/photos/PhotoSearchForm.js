@@ -116,7 +116,7 @@ const PhotoSearchForm = (props) => {
   };
 
   const clearPhotosAndGetLatest = () => {
-    setRoverPhotos();
+    setRoverPhotos([]);
     getLatestPhotos().then((obj) => setLatestPhotos(obj.latest_photos));
   };
 

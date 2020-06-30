@@ -13,6 +13,7 @@ import {
   Button,
   Menu,
 } from "semantic-ui-react";
+import PhotoFilterCamera from "../photos/PhotoFilterCamera";
 
 const PhotosSaved = () => {
   const putEditedPhoto = DataManager.putEditedPhoto;
@@ -162,7 +163,7 @@ const PhotosSaved = () => {
 
   return (
     <>
-      <Header textAlign="center" content={`SAVED P H O T O S`} />
+      <Header textAlign="center" content={`SAVED PHOTOS`} />
       <Menu attached="top" tabular>
         <Menu.Item
           active={activeTab.name === "Saved Photos"}
@@ -180,6 +181,7 @@ const PhotosSaved = () => {
           onClick={(evt) => {
             setSavedPhotos([]);
             changeTab(evt);
+            return <PhotoFilterCamera />;
           }}
         />
         <Menu.Item
@@ -193,30 +195,43 @@ const PhotosSaved = () => {
       </Menu>
       <Grid centered attached="bottom" columns={2} verticalAlign="middle">
         <Grid.Row centered columns={4}>
-          {savedPhotos.reverse().map((photo) => (
-            <Grid.Column key={photo.id}>
-              <Card
-                style={{ marginBottom: 10, marginTop: 10 }}
-                raised
-                key={photo.id}
-              >
-                <Card.Description floated="right">
-                  {deleteModal(photo)}
-                </Card.Description>
-                <Card.Content>
-                  <Image rounded size="small" floated="right" src={photo.url} />
-                  <Card.Meta>
-                    <h4>{photo.camera}</h4>
-                  </Card.Meta>
-                  <Card.Meta>
-                    <h4>{photo.date}</h4>
-                  </Card.Meta>
-                  <Card.Content>Comment: {photo.comment} </Card.Content>
-                </Card.Content>
-                <Card.Content extra>{editModal(photo)}</Card.Content>
-              </Card>
-            </Grid.Column>
-          ))}
+          {activeTab.name === "Saved Photos"
+            ? savedPhotos.reverse().map((photo) => (
+                <Grid.Column key={photo.id}>
+                  <Card
+                    style={{ marginBottom: 10, marginTop: 10 }}
+                    raised
+                    key={photo.id}
+                  >
+                    <Card.Description floated="right">
+                      {deleteModal(photo)}
+                    </Card.Description>
+                    <Card.Content>
+                      <Image
+                        rounded
+                        size="small"
+                        floated="right"
+                        src={photo.url}
+                      />
+                      <Card.Meta>
+                        <h4>{photo.camera}</h4>
+                      </Card.Meta>
+                      <Card.Meta>
+                        <h4>{photo.date}</h4>
+                      </Card.Meta>
+                      <Card.Content>Comment: {photo.comment} </Card.Content>
+                    </Card.Content>
+                    <Card.Content extra>{editModal(photo)}</Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))
+            : null}
+          {activeTab.name === "Filter By Camera" ? (
+            <PhotoFilterCamera
+              editModal={editModal}
+              deleteModal={deleteModal}
+            />
+          ) : null}
         </Grid.Row>
       </Grid>
     </>
