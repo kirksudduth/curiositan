@@ -211,7 +211,7 @@ const PhotosSaved = () => {
                   >
                     <Card.Description
                       style={{
-                        background: "#D1A482",
+                        background: "#DDBEA6",
                       }}
                     >
                       {deleteModal(photo)}
@@ -233,7 +233,7 @@ const PhotosSaved = () => {
                     </Card.Content>
                     <Card.Content
                       style={{
-                        background: "#D1A482",
+                        background: "#DDBEA6",
                       }}
                       extra
                     >
