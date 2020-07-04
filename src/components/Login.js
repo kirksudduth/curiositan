@@ -51,7 +51,7 @@ const Login = (props) => {
   return (
     <>
       <Header
-        style={{ background: "#D1A482" }}
+        style={{ background: "#DDBEA6" }}
         content="Curiositan"
         block
         as="h1"

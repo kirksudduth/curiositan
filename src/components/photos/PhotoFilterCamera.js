@@ -78,11 +78,11 @@ const PhotoFilterCamera = (props) => {
             labeled
             icon="retro camera"
             options={cameraOptions}
-            // search
             placeholder="Select Camera"
             onClose={(event) => {
               event.persist();
               const camera = event.nativeEvent.path[1].id;
+              console.log(camera);
               showFilteredPhotos(camera);
             }}
           />

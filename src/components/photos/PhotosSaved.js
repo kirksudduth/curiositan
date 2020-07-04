@@ -201,10 +201,10 @@ const PhotosSaved = () => {
             ? savedPhotos.reverse().map((photo) => (
                 <Grid.Column key={photo.id}>
                   <Card
+                    fluid
                     style={{
                       marginBottom: 10,
                       marginTop: 10,
-                      // background: "#D1A482",
                     }}
                     raised
                     key={photo.id}
@@ -216,7 +216,7 @@ const PhotosSaved = () => {
                     >
                       {deleteModal(photo)}
                     </Card.Description>
-                    <Card.Content style={{ background: "#CF9C77" }}>
+                    <Card.Content style={{ background: "#fc684a" }}>
                       <Image
                         rounded
                         size="small"

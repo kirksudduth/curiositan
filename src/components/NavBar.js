@@ -17,7 +17,7 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Segment style={{ background: "#D1A482" }} clearing>
+      <Segment style={{ background: "#DDBEA6" }} clearing>
         <Header floated="left" as="h1">
           <Image
             src={require("./curiositanIcon.png")}
