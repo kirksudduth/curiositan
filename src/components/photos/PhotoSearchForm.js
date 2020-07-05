@@ -92,8 +92,12 @@ const PhotoSearchForm = (props) => {
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
-      const camerasArray = obj.cameras;
-      setCameras(camerasArray);
+      if (obj === undefined) {
+        window.alert("Try a different date!");
+      } else {
+        const camerasArray = obj.cameras;
+        setCameras(camerasArray);
+      }
     });
   };
 
@@ -139,6 +143,7 @@ const PhotoSearchForm = (props) => {
                 id="date"
                 type="date"
                 min="2012-08-06"
+                max="Today"
                 onChange={handleDateFieldChange}
               />
               <Form.Field>

@@ -24,7 +24,12 @@ const PhotoFilterDate = (props) => {
         <Grid.Column key={photo.id}>
           <Card
             fluid
-            style={{ marginBottom: 10, marginTop: 10 }}
+            style={{
+              marginBottom: 10,
+              marginTop: 10,
+              marginLeft: 5,
+              marginRight: 5,
+            }}
             raised
             key={photo.id}
           >
