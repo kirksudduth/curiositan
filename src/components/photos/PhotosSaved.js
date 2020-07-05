@@ -12,6 +12,8 @@ import {
   Form,
   Button,
   Menu,
+  Container,
+  Segment,
 } from "semantic-ui-react";
 import PhotoFilterCamera from "../photos/PhotoFilterCamera";
 import PhotoFilterDate from "../photos/PhotoFilterDate";
@@ -165,99 +167,109 @@ const PhotosSaved = () => {
 
   return (
     <>
-      <Header textAlign="center" content={`SAVED PHOTOS`} />
-      <Menu attached="top" tabular>
-        <Menu.Item
-          active={activeTab.name === "Saved Photos"}
-          name="Saved Photos"
-          onClick={(evt) => {
-            changeTab(evt);
-            getUserWithSavedPhotos(user.id).then((result) =>
-              setSavedPhotos(result.photos)
-            );
-          }}
+      <Container style={{ background: "#957e6e", borderRadius: 10 }}>
+        <Header
+          textAlign="center"
+          content={`SAVED PHOTOS`}
+          style={{ padding: 25, color: "#DDBEA6" }}
         />
-        <Menu.Item
-          name="Filter By Camera"
-          active={activeTab.name === "Filter By Camera"}
-          onClick={(evt) => {
-            setSavedPhotos([]);
-            changeTab(evt);
-            return <PhotoFilterCamera />;
-          }}
-        />
-        <Menu.Item
-          name="Sort By Date"
-          active={activeTab.name === "Sort By Date"}
-          onClick={(evt) => {
-            setSavedPhotos([]);
-            changeTab(evt);
-          }}
-        />
-      </Menu>
-      <Grid centered attached="bottom" columns={2} verticalAlign="middle">
-        <Grid.Row centered columns={4}>
-          {activeTab.name === "Saved Photos"
-            ? savedPhotos.reverse().map((photo) => (
-                <Grid.Column key={photo.id}>
-                  <Card
-                    style={{
-                      marginBottom: 10,
-                      marginTop: 10,
-                      // background: "#D1A482",
-                    }}
-                    raised
-                    key={photo.id}
-                  >
-                    <Card.Description
-                      style={{
-                        background: "#D1A482",
-                      }}
-                    >
-                      {deleteModal(photo)}
-                    </Card.Description>
-                    <Card.Content style={{ background: "#aab3bc" }}>
-                      <Image
-                        rounded
-                        size="small"
-                        floated="right"
-                        src={photo.url}
-                      />
-                      <Card.Meta>
-                        <h4>{photo.camera}</h4>
-                      </Card.Meta>
-                      <Card.Meta>
-                        <h4>{photo.date}</h4>
-                      </Card.Meta>
-                      <Card.Content>Comment: {photo.comment} </Card.Content>
-                    </Card.Content>
-                    <Card.Content
-                      style={{
-                        background: "#D1A482",
-                      }}
-                      extra
-                    >
-                      {editModal(photo)}
-                    </Card.Content>
-                  </Card>
-                </Grid.Column>
-              ))
-            : null}
-          {activeTab.name === "Filter By Camera" ? (
-            <PhotoFilterCamera
-              editModal={editModal}
-              deleteModal={deleteModal}
+        <Container>
+          <Menu attached="top" tabular>
+            <Menu.Item
+              active={activeTab.name === "Saved Photos"}
+              name="Saved Photos"
+              onClick={(evt) => {
+                changeTab(evt);
+                getUserWithSavedPhotos(user.id).then((result) =>
+                  setSavedPhotos(result.photos)
+                );
+              }}
             />
-          ) : null}
-          {activeTab.name === "Sort By Date" ? (
-            <PhotoFilterDate
-              getUserWithSavedPhotos={getUserWithSavedPhotos}
-              editModal={editModal}
-              deleteModal={deleteModal}
+            <Menu.Item
+              name="Filter By Camera"
+              active={activeTab.name === "Filter By Camera"}
+              onClick={(evt) => {
+                setSavedPhotos([]);
+                changeTab(evt);
+                return <PhotoFilterCamera />;
+              }}
             />
-          ) : null}
-        </Grid.Row>
-      </Grid>
+            <Menu.Item
+              name="Sort By Date"
+              active={activeTab.name === "Sort By Date"}
+              onClick={(evt) => {
+                setSavedPhotos([]);
+                changeTab(evt);
+              }}
+            />
+          </Menu>
+          <Grid centered attached="bottom" columns={2} verticalAlign="middle">
+            <Grid.Row centered columns={4}>
+              {activeTab.name === "Saved Photos"
+                ? savedPhotos.reverse().map((photo) => (
+                    <Grid.Column key={photo.id}>
+                      <Card
+                        fluid
+                        style={{
+                          marginBottom: 10,
+                          marginTop: 10,
+                          marginLeft: 5,
+                          marginRight: 5,
+                        }}
+                        raised
+                        key={photo.id}
+                      >
+                        <Card.Description
+                          style={{
+                            background: "#DDBEA6",
+                          }}
+                        >
+                          {deleteModal(photo)}
+                        </Card.Description>
+                        <Card.Content style={{ background: "#fc684a" }}>
+                          <Image
+                            rounded
+                            size="small"
+                            floated="right"
+                            src={photo.url}
+                          />
+                          <Card.Meta>
+                            <h4>{photo.camera}</h4>
+                          </Card.Meta>
+                          <Card.Meta>
+                            <h4>{photo.date}</h4>
+                          </Card.Meta>
+                          <Card.Content>Comment: {photo.comment} </Card.Content>
+                        </Card.Content>
+                        <Card.Content
+                          style={{
+                            background: "#DDBEA6",
+                          }}
+                          extra
+                        >
+                          {editModal(photo)}
+                        </Card.Content>
+                      </Card>
+                    </Grid.Column>
+                  ))
+                : null}
+              {activeTab.name === "Filter By Camera" ? (
+                <PhotoFilterCamera
+                  editModal={editModal}
+                  deleteModal={deleteModal}
+                />
+              ) : null}
+              {activeTab.name === "Sort By Date" ? (
+                <PhotoFilterDate
+                  getUserWithSavedPhotos={getUserWithSavedPhotos}
+                  editModal={editModal}
+                  deleteModal={deleteModal}
+                />
+              ) : null}
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </Container>
     </>
   );
 };

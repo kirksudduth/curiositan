@@ -78,7 +78,6 @@ const PhotoFilterCamera = (props) => {
             labeled
             icon="retro camera"
             options={cameraOptions}
-            // search
             placeholder="Select Camera"
             onClose={(event) => {
               event.persist();
@@ -91,14 +90,24 @@ const PhotoFilterCamera = (props) => {
       {cameraFilterPics.reverse().map((photo) => (
         <Grid.Column key={photo.id}>
           <Card
-            style={{ marginBottom: 10, marginTop: 10 }}
+            style={{
+              marginBottom: 10,
+              marginTop: 10,
+              marginLeft: 5,
+              marginRight: 5,
+            }}
             raised
             key={photo.id}
           >
-            <Card.Description floated="right">
+            <Card.Description
+              style={{
+                background: "#DDBEA6",
+              }}
+              floated="right"
+            >
               {deleteModal(photo)}
             </Card.Description>
-            <Card.Content>
+            <Card.Content style={{ background: "#fc684a" }}>
               <Image rounded size="small" floated="right" src={photo.url} />
               <Card.Meta>
                 <h4>{photo.camera}</h4>
@@ -108,7 +117,14 @@ const PhotoFilterCamera = (props) => {
               </Card.Meta>
               <Card.Content>Comment: {photo.comment} </Card.Content>
             </Card.Content>
-            <Card.Content extra>{editModal(photo)}</Card.Content>
+            <Card.Content
+              style={{
+                background: "#DDBEA6",
+              }}
+              extra
+            >
+              {editModal(photo)}
+            </Card.Content>
           </Card>
         </Grid.Column>
       ))}

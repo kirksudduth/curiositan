@@ -59,7 +59,7 @@ const PhotoSearchForm = (props) => {
   // *****  MODAL FOR SAVE PHOTO FUNCTION  *****
   const modalsRule = (obj) => (
     <Modal trigger={<Icon name="eye" />} closeIcon>
-      <Header content="BLOWN UP" />
+      <Header content="More Pixels for Viewing" />
       <Modal.Content>
         <Image size="huge" src={obj.img_src} />
       </Modal.Content>
@@ -92,8 +92,12 @@ const PhotoSearchForm = (props) => {
 
   const getCameras = (date) => {
     DataManager.getManifest(date).then((obj) => {
-      const camerasArray = obj.cameras;
-      setCameras(camerasArray);
+      if (obj === undefined) {
+        window.alert("Try a different date!");
+      } else {
+        const camerasArray = obj.cameras;
+        setCameras(camerasArray);
+      }
     });
   };
 
@@ -139,6 +143,7 @@ const PhotoSearchForm = (props) => {
                 id="date"
                 type="date"
                 min="2012-08-06"
+                max="Today"
                 onChange={handleDateFieldChange}
               />
               <Form.Field>
@@ -213,8 +218,8 @@ const PhotoSearchForm = (props) => {
         <Grid.Row>
           {roverPhotos.map((photo) => (
             <Grid.Column key={photo.id} width={4}>
-              <Card style={{ marginBottom: 10 }} raised key={photo.id}>
-                <Card.Content>
+              <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
+                <Card.Content style={{ background: "#DDBEA6" }}>
                   <Image
                     rounded
                     size="tiny"
@@ -228,14 +233,16 @@ const PhotoSearchForm = (props) => {
                     <h4>Date:</h4> {photo.earth_date}
                   </Card.Meta>
                 </Card.Content>
-                <Card.Content extra>{modalsRule(photo)}</Card.Content>
+                <Card.Content style={{ background: "#fc684a" }} extra>
+                  {modalsRule(photo)}
+                </Card.Content>
               </Card>
             </Grid.Column>
           ))}
           {latestPhotos.map((photo) => (
             <Grid.Column key={photo.id} width={4}>
-              <Card style={{ marginBottom: 10 }} raised key={photo.id}>
-                <Card.Content>
+              <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
+                <Card.Content style={{ background: "#DDBEA6" }}>
                   <Image
                     rounded
                     size="tiny"
@@ -249,7 +256,9 @@ const PhotoSearchForm = (props) => {
                     <h4>Date:</h4> {photo.earth_date}
                   </Card.Meta>
                 </Card.Content>
-                <Card.Content extra>{modalsRule(photo)}</Card.Content>
+                <Card.Content style={{ background: "#fc684a" }} extra>
+                  {modalsRule(photo)}
+                </Card.Content>
               </Card>
             </Grid.Column>
           ))}
