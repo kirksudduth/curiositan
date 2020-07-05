@@ -26,7 +26,7 @@ This app is for organizing and collecting pictures that have been taken by the M
 - [Semantic UI](https://react.semantic-ui.com/) for cards, modals, popups, forms, buttons, icons
 - [React Router](https://reactrouter.com/web/guides/quick-start) for withRouter, NavLink and Route
 - [Curiosity Photos API](https://github.com/chrisccerami/mars-photo-api) for getting all those wonderful Mars pics!
-- [Coolors](https://coolors.co/) for picking colors
+- [Coolors](https://coolors.co/) for picking color scheme
 
 ## Skills Utilized
 
@@ -37,7 +37,7 @@ I utilized all skills that I have learned at NSS up to this point, including:
 3. Interacting and familiarizing myself with an external API
 4. Javascript: objects, arrays, functions, array methods (map, reverse)
 5. Data storage in json-server
-6. Google
+6. Googling
 7. Modular Code
 
 ## Database Diagram
