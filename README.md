@@ -1,4 +1,4 @@
-# Curiositan <img  src="./src/images/curiositySelfie.png"  height=57  width=100  alt="Curiosity!"/>
+# Curiositan <img  src="./src/images/curiositySelfie.png"  height=115  width=201  alt="Curiosity!"/>
 
 [Kirk Sudduth](https://github.com/kirksudduth)'s Front-End Capstone for [Nashville Software School Cohort 40](https://github.com/nss-cohort-40)
 
