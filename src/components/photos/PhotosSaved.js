@@ -13,7 +13,6 @@ import {
   Button,
   Menu,
   Container,
-  Segment,
 } from "semantic-ui-react";
 import PhotoFilterCamera from "../photos/PhotoFilterCamera";
 import PhotoFilterDate from "../photos/PhotoFilterDate";
