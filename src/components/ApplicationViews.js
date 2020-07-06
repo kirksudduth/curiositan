@@ -3,6 +3,7 @@ import React from "react";
 import PhotoSearchList from "../components/photos/PhotoSearchList";
 import PhotosSaved from "./photos/PhotosSaved";
 import Curiositans from "./curiositans/Curiositans";
+import MessageList from "./messages/MessageList";
 
 const ApplicationViews = () => {
   return (
@@ -26,6 +27,13 @@ const ApplicationViews = () => {
         path="/curiositans"
         render={(props) => {
           return <Curiositans {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/messages"
+        render={(props) => {
+          return <MessageList {...props} />;
         }}
       />
     </>
