@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import React from "react";
 import PhotoSearchList from "../components/photos/PhotoSearchList";
 import PhotosSaved from "./photos/PhotosSaved";
+import Curiositans from "./curiositans/Curiositans";
 
 const ApplicationViews = () => {
   return (
@@ -18,6 +19,13 @@ const ApplicationViews = () => {
         path="/saved_photos"
         render={(props) => {
           return <PhotosSaved {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/curiositans"
+        render={(props) => {
+          return <Curiositans {...props} />;
         }}
       />
     </>

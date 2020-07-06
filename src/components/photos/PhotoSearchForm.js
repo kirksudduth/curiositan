@@ -11,6 +11,7 @@ import {
   Modal,
   Input,
   Popup,
+  Container,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
 
@@ -126,7 +127,12 @@ const PhotoSearchForm = (props) => {
 
   return (
     <>
-      <Grid verticalAlign="middle" width="equal">
+      <Grid
+        verticalAlign="middle"
+        style={{
+          background: "#957e6e",
+        }}
+      >
         <Grid.Column width={4}>
           <Header
             textAlign="center"
@@ -143,7 +149,6 @@ const PhotoSearchForm = (props) => {
                 id="date"
                 type="date"
                 min="2012-08-06"
-                max="Today"
                 onChange={handleDateFieldChange}
               />
               <Form.Field>
@@ -234,7 +239,7 @@ const PhotoSearchForm = (props) => {
                   </Card.Meta>
                 </Card.Content>
                 <Card.Content style={{ background: "#fc684a" }} extra>
-                  {modalsRule(photo)}
+                  {modalsRule(photo)} {`<=== View -or- View and Save`}
                 </Card.Content>
               </Card>
             </Grid.Column>
