@@ -18,14 +18,15 @@ const NavBar = (props) => {
   return (
     <>
       <Segment style={{ background: "#DDBEA6" }} clearing>
-        <Header floated="left" as="h1">
+        <Header floated="left" as="h1" style={{ color: "white" }}>
           <Image
-            src={require("./curiositanIcon.png")}
+            src={require("../images/curiositySelfie.png")}
             alt="Curiositan"
-            size="medium"
+            style={{ width: 150, height: 80 }}
+            rounded
             // circular
           />
-          Curiositan
+          C U R I O S I T A N
         </Header>
         <Header as="h1" floated="right">
           <Label as="a" color="brown">
