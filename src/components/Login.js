@@ -40,14 +40,10 @@ const Login = (props) => {
       ) {
         credentials.id = user[0].id;
         credentials.username = user[0].username;
-        console.log(credentials.id, credentials.username);
         handleLogin();
-        console.log("credentials: ", credentials);
-        console.log("sessionStorage: ", sessionStorage);
       }
     });
   };
-  console.log(props);
   return (
     <>
       <Header

@@ -29,6 +29,7 @@ const PhotoFilterDate = (props) => {
               marginTop: 10,
               marginLeft: 5,
               marginRight: 5,
+              padding: 2,
             }}
             raised
             key={photo.id}

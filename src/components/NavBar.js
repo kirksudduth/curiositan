@@ -29,7 +29,7 @@ const NavBar = (props) => {
           C U R I O S I T A N
         </Header>
         <Header as="h1" floated="right">
-          <Label as="a" color="brown">
+          <Label as="a" color="brown" size="large">
             <Icon name="user circle" />
             {user.username}
           </Label>

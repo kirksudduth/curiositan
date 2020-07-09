@@ -127,148 +127,143 @@ const PhotoSearchForm = (props) => {
 
   return (
     <>
-      <Grid
+      {/* <Grid
         verticalAlign="middle"
         style={{
           background: "#957e6e",
         }}
-      >
-        <Grid.Column width={4}>
-          <Header
-            textAlign="center"
-            content="Search Curiosity's Photos by Date and Camera Type"
-            as="h5"
-          />
-        </Grid.Column>
-        <Grid.Column width={8}>
-          <Form size="tiny">
-            <Form.Group grouped widths="equal">
-              <Form.Field
-                label="Date:"
-                control="input"
-                id="date"
-                type="date"
-                min="2012-08-06"
-                onChange={handleDateFieldChange}
-              />
-              <Form.Field>
-                <Button
-                  fluid
-                  size="tiny"
-                  onClick={() => {
-                    if (date.date === "") {
-                      window.alert("Please enter date.");
-                    } else {
-                      getCameras(date);
+      > */}
+      <Grid.Column width={4}>
+        <Header
+          textAlign="center"
+          content="Search Curiosity's Photos by Date and Camera Type"
+          as="h5"
+        />
+      </Grid.Column>
+      <Grid.Column width={8}>
+        <Form size="tiny">
+          <Form.Group grouped widths="equal">
+            <Form.Field
+              label="Date:"
+              control="input"
+              id="date"
+              type="date"
+              min="2012-08-06"
+              onChange={handleDateFieldChange}
+            />
+            <Form.Field>
+              <Button
+                fluid
+                size="tiny"
+                onClick={() => {
+                  if (date.date === "") {
+                    window.alert("Please enter date.");
+                  } else {
+                    getCameras(date);
+                  }
+                }}
+                value="date"
+              >
+                Get Cameras
+              </Button>
+            </Form.Field>
+          </Form.Group>
+          <Form.Group grouped>
+            <label>Camera Type:</label>
+            <Grid.Row>
+              {cameras.map((camera) => (
+                <Grid.Column key={camera} width={2}>
+                  <Popup
+                    key={camera}
+                    content={camerasPopupContent(camera)}
+                    trigger={
+                      <Form.Radio
+                        key={camera}
+                        label={camera}
+                        value={camera}
+                        checked={camValue.value === `${camera}`}
+                        onChange={handleRadioChange}
+                      />
                     }
-                  }}
-                  value="date"
-                >
-                  Get Cameras
-                </Button>
-              </Form.Field>
-            </Form.Group>
-            <Form.Group grouped>
-              <label>Camera Type:</label>
-              <Grid.Row>
-                {cameras.map((camera) => (
-                  <Grid.Column key={camera} width={2}>
-                    <Popup
-                      key={camera}
-                      content={camerasPopupContent(camera)}
-                      trigger={
-                        <Form.Radio
-                          key={camera}
-                          label={camera}
-                          value={camera}
-                          checked={camValue.value === `${camera}`}
-                          onChange={handleRadioChange}
-                        />
-                      }
-                      position="top left"
-                      basic
-                    />
-                  </Grid.Column>
-                ))}
-              </Grid.Row>
-            </Form.Group>
-            <Button
-              size="tiny"
-              onClick={() => {
-                if (date.date === "" || camValue.value === "") {
-                  window.alert("Please enter date and camera");
-                } else {
-                  getRoverPhotos(date.date, camValue.value);
-                }
-              }}
-              fluid
-            >
-              Get Photos
-            </Button>
-          </Form>
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <Message style={{ align: "center" }}>
-            Want to see the latest photos Curiosity has taken?{" "}
-            <Button
-              fluid
-              animated="fade"
-              onClick={() => clearPhotosAndGetLatest()}
-            >
-              <Button.Content visible>Click Here!</Button.Content>
-              <Button.Content hidden>Latest Mars pics!</Button.Content>
-            </Button>
-          </Message>
-        </Grid.Column>
-        <Grid.Row>
-          {roverPhotos.map((photo) => (
-            <Grid.Column key={photo.id} width={4}>
-              <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
-                <Card.Content style={{ background: "#DDBEA6" }}>
-                  <Image
-                    rounded
-                    size="tiny"
-                    floated="right"
-                    src={photo.img_src}
+                    position="top left"
+                    basic
                   />
-                  <Card.Meta>
-                    <h4>Camera:</h4> {photo.camera.full_name}
-                  </Card.Meta>
-                  <Card.Meta>
-                    <h4>Date:</h4> {photo.earth_date}
-                  </Card.Meta>
-                </Card.Content>
-                <Card.Content style={{ background: "#fc684a" }} extra>
-                  {modalsRule(photo)} {`<=== View -or- View and Save`}
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          ))}
-          {latestPhotos.map((photo) => (
-            <Grid.Column key={photo.id} width={4}>
-              <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
-                <Card.Content style={{ background: "#DDBEA6" }}>
-                  <Image
-                    rounded
-                    size="tiny"
-                    floated="right"
-                    src={photo.img_src}
-                  />
-                  <Card.Meta>
-                    <h4>Camera:</h4> {photo.camera.full_name}
-                  </Card.Meta>
-                  <Card.Meta>
-                    <h4>Date:</h4> {photo.earth_date}
-                  </Card.Meta>
-                </Card.Content>
-                <Card.Content style={{ background: "#fc684a" }} extra>
-                  {modalsRule(photo)}
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          ))}
-        </Grid.Row>
-      </Grid>
+                </Grid.Column>
+              ))}
+            </Grid.Row>
+          </Form.Group>
+          <Button
+            size="tiny"
+            onClick={() => {
+              if (date.date === "" || camValue.value === "") {
+                window.alert("Please enter date and camera");
+              } else {
+                getRoverPhotos(date.date, camValue.value);
+              }
+            }}
+            fluid
+          >
+            Get Photos
+          </Button>
+        </Form>
+      </Grid.Column>
+      <Grid.Column width={4}>
+        <Message style={{ align: "center" }}>
+          Want to see the latest photos Curiosity has taken?{" "}
+          <Button
+            fluid
+            animated="fade"
+            onClick={() => clearPhotosAndGetLatest()}
+          >
+            <Button.Content visible>Click Here!</Button.Content>
+            <Button.Content hidden>Latest Mars pics!</Button.Content>
+          </Button>
+        </Message>
+      </Grid.Column>
+      {/* <Grid.Row > */}
+      {roverPhotos.map((photo) => (
+        <Grid.Column key={photo.id} width={4}>
+          <Card
+            fluid
+            style={{ marginBottom: 10, marginTop: 10 }}
+            raised
+            key={photo.id}
+          >
+            <Card.Content style={{ background: "#DDBEA6" }}>
+              <Image rounded size="tiny" floated="right" src={photo.img_src} />
+              <Card.Meta>
+                <h4>Camera:</h4> {photo.camera.full_name}
+              </Card.Meta>
+              <Card.Meta>
+                <h4>Date:</h4> {photo.earth_date}
+              </Card.Meta>
+            </Card.Content>
+            <Card.Content style={{ background: "#fc684a" }} extra>
+              {modalsRule(photo)} {`<=== View -or- View and Save`}
+            </Card.Content>
+          </Card>
+        </Grid.Column>
+      ))}
+      {latestPhotos.map((photo) => (
+        <Grid.Column key={photo.id} width={4}>
+          <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
+            <Card.Content style={{ background: "#DDBEA6" }}>
+              <Image rounded size="tiny" floated="right" src={photo.img_src} />
+              <Card.Meta>
+                <h4>Camera:</h4> {photo.camera.full_name}
+              </Card.Meta>
+              <Card.Meta>
+                <h4>Date:</h4> {photo.earth_date}
+              </Card.Meta>
+            </Card.Content>
+            <Card.Content style={{ background: "#fc684a" }} extra>
+              {modalsRule(photo)}
+            </Card.Content>
+          </Card>
+        </Grid.Column>
+      ))}
+      {/* </Grid.Row> */}
+      {/* </Grid> */}
     </>
   );
 };
