@@ -21,7 +21,13 @@ const PhotoSearchList = (props) => {
 
   return (
     <>
-      <Grid celled>
+      <Grid
+        // celled
+        verticalAlign="middle"
+        style={{
+          background: "#957e6e",
+        }}
+      >
         <Grid.Row>
           <PhotoSearchForm
             handleRadioChange={handleRadioChange}
