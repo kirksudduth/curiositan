@@ -225,7 +225,13 @@ const PhotoSearchForm = (props) => {
         <Grid.Column key={photo.id} width={4}>
           <Card
             fluid
-            style={{ marginBottom: 10, marginTop: 10 }}
+            style={{
+              marginBottom: 10,
+              marginTop: 10,
+              marginLeft: 10,
+              marginRight: 10,
+              padding: 2,
+            }}
             raised
             key={photo.id}
           >
