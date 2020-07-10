@@ -252,7 +252,18 @@ const PhotoSearchForm = (props) => {
       ))}
       {latestPhotos.map((photo) => (
         <Grid.Column key={photo.id} width={4}>
-          <Card fluid style={{ marginBottom: 10 }} raised key={photo.id}>
+          <Card
+            fluid
+            style={{
+              marginBottom: 10,
+              marginTop: 10,
+              marginLeft: 10,
+              marginRight: 10,
+              padding: 2,
+            }}
+            raised
+            key={photo.id}
+          >
             <Card.Content style={{ background: "#DDBEA6" }}>
               <Image rounded size="tiny" floated="right" src={photo.img_src} />
               <Card.Meta>
