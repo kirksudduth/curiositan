@@ -170,7 +170,10 @@ const PhotosSaved = () => {
         <Header
           textAlign="center"
           content={`SAVED PHOTOS`}
-          style={{ padding: 25, color: "#DDBEA6" }}
+          style={{
+            padding: 25,
+            color: "white",
+          }}
         />
         <Container>
           <Menu attached="top" tabular>
