@@ -61,7 +61,7 @@ const PhotoSearchForm = (props) => {
   const modalsRule = (obj) => (
     <Modal trigger={<Icon name="eye" />} closeIcon>
       <Header content="More Pixels for Viewing" />
-      <Modal.Content>
+      <Modal.Content style={{ justifyContent: "center" }}>
         <Image size="huge" src={obj.img_src} />
       </Modal.Content>
       <Modal.Actions>
