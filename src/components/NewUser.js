@@ -6,6 +6,7 @@ import {
   Form,
   Checkbox,
   Button,
+  Image,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 import { withRouter } from "react-router-dom";
@@ -41,12 +42,18 @@ const NewUser = (props) => {
 
   return (
     <>
-      <Header
-        content="Red Planet: A Curiosity"
-        block
-        textAlign="center"
-        as="h1"
-      />
+      <Segment style={{ background: "#DDBEA6" }} clearing>
+        <Header floated="left" as="h1" style={{ color: "white" }}>
+          <Image
+            src={require("../images/curiositySelfie.png")}
+            alt="Curiositan"
+            style={{ width: 150, height: 80 }}
+            rounded
+            // circular
+          />
+          C U R I O S I T A N
+        </Header>
+      </Segment>
       <Grid centered columns={2}>
         <Grid.Column>
           <Header content="New User Form" as="h2" textAlign="center" />
