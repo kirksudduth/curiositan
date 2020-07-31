@@ -18,7 +18,9 @@ const NewUser = (props) => {
   const [newUser, setNewUser] = useState({
     username: "",
     email: "",
+    confirmEmail: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleNewUserFieldChange = (evt) => {
@@ -29,7 +31,6 @@ const NewUser = (props) => {
 
   const handleNewUserLogin = () => {
     DataManager.addNewUser(newUser);
-    debugger;
     DataManager.getUserByEmail(newUser.email).then((user) => {
       const stateToChange = { ...credentials };
       stateToChange.id = user[0].id;
@@ -85,6 +86,7 @@ const NewUser = (props) => {
                 iconPosition="left"
                 placeholder="Confirm Email"
                 id="confirmEmail"
+                onChange={handleNewUserFieldChange}
               />
               <Form.Input
                 placeholder="Password"
@@ -100,6 +102,7 @@ const NewUser = (props) => {
                 iconPosition="left"
                 type="password"
                 id="confirmPassword"
+                onChange={handleNewUserFieldChange}
               />
               <Form.Field>
                 <Checkbox label="Remember me" />
