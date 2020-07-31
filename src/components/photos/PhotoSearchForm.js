@@ -127,18 +127,14 @@ const PhotoSearchForm = (props) => {
 
   return (
     <>
-      {/* <Grid
-        verticalAlign="middle"
-        style={{
-          background: "#957e6e",
-        }}
-      > */}
-      <Grid.Column width={4}>
-        <Header
-          textAlign="center"
-          content="Search Curiosity's Photos by Date and Camera Type"
-          as="h5"
-        />
+      <Grid.Column width={4} style={{ justifyContent: "center" }}>
+        <Container textAlign="center">
+          <Header
+            textAlign="center"
+            content="Search Curiosity's Photos by Date and Camera Type"
+            as="h5"
+          />
+        </Container>
       </Grid.Column>
       <Grid.Column width={8}>
         <Form size="tiny">
@@ -220,7 +216,6 @@ const PhotoSearchForm = (props) => {
           </Button>
         </Message>
       </Grid.Column>
-      {/* <Grid.Row > */}
       {roverPhotos.map((photo) => (
         <Grid.Column key={photo.id} width={4}>
           <Card
@@ -279,8 +274,6 @@ const PhotoSearchForm = (props) => {
           </Card>
         </Grid.Column>
       ))}
-      {/* </Grid.Row> */}
-      {/* </Grid> */}
     </>
   );
 };

@@ -5,3 +5,8 @@ button {
 .active {
   background-color: "#fc684a";
 }
+
+.header_text {
+  max-width: 175px;
+  align-self: center;
+}

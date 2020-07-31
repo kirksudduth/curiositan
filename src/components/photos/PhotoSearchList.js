@@ -22,7 +22,6 @@ const PhotoSearchList = (props) => {
   return (
     <>
       <Grid
-        // celled
         verticalAlign="middle"
         style={{
           background: "#957e6e",
