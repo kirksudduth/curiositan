@@ -1,6 +1,8 @@
-# Curiositan <img  src="./src/images/curiositySelfie.png"  height=115  width=201  alt="Curiosity!"/>
+# Curiositan
 
-[Kirk Sudduth](https://github.com/kirksudduth)'s Front-End Capstone for [Nashville Software School: Cohort 40](https://github.com/nss-cohort-40)
+<img align="right" src="./src/images/curiositySelfie.png"  height=115  width=201  alt="Curiosity!"/>
+
+[Kirk Sudduth](https://www.linkedin.com/in/kirksudduth/)'s Front-End Capstone for [Nashville Software School: Cohort 40](https://github.com/nss-cohort-40)
 
 ## Proposal
 
@@ -11,6 +13,7 @@ People on Earth want to see what Mars looks like. The Curiosity Mars rover is ta
 - Built with React
 - Users can create account, login via sessionStorage and logout
 - Users can create, update (comment) and delete photo objects
+- Users can explore the Red Planet through the eyes of Curiosity!
 
 ## Setup
 
