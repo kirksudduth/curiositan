@@ -9,16 +9,23 @@ People on Earth want to see what Mars looks like. The Curiosity Mars rover is ta
 ## Project Definition
 
 - Built with React
-- Users can create accout, login via sessionStorage and logout
+- Users can create account, login via sessionStorage and logout
 - Users can create, update (comment) and delete photo objects
 
 ## Setup
 
+1. `git clone` this repository into your terminal to the directory of your choice
+1. Run `npm install react` in the root directory
+1. Open a new tab in your terminal and cd into the api directory
+1. Run `json-server -p 5000 -w database.json`
+1. Run `npm start` in the root directory
+1. Enjoy looking at all the pictures Curiosity has taken!
+
 ## Overview
 
-This app is for organizing and collecting pictures that have been taken by the Mars Rover, Curiosity. When a user logs in they are taken directly to the PhotoSearchForm component. They can either search Curiosity's photos or go to their Saved Photos and edit comments or delete the photo all together. In the user's saved photos component, the initial render is all saved photos with the most recently added being the first of the group. Users can filter their photos by selecting a tab to look at photos by camera type or by date of the photo taken (descending latest to earliest).
-
 **Do not login with any sensitive information. This is not a secure application.**
+
+This app is for organizing and collecting pictures that have been taken by the Mars Rover, Curiosity. When a user logs in they are taken directly to the PhotoSearchForm component. They can either search Curiosity's photos or go to their Saved Photos and edit comments or delete the photo all together. In the user's saved photos component, the initial render is all saved photos with the most recently added being the first of the group. Users can filter their photos by selecting a tab to look at photos by camera type or by date of the photo taken (descending latest to earliest).
 
 ## Technologies Used
 
