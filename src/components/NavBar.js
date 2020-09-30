@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, Header, Icon, Segment, Label, Image } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
+import "../Curiosity.css";
 
 const NavBar = (props) => {
   const clearUser = props.clearUser;
@@ -17,14 +18,13 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Segment style={{ background: "#DDBEA6" }} clearing>
-        <Header floated="left" as="h1" style={{ color: "white" }}>
+      <Segment className="curiositan_segment" clearing>
+        <Header floated="left" as="h1" className="curiositan_header">
           <Image
             src={require("../images/curiositySelfie.png")}
             alt="Curiositan"
-            style={{ width: 150, height: 80 }}
+            className="curiositan_image"
             rounded
-            // circular
           />
           C U R I O S I T A N
         </Header>

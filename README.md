@@ -1,10 +1,10 @@
 # Curiositan<img align="right" src="./src/images/curiositySelfie.png"  height=115  width=201  alt="Curiosity!"/>
 
-[Kirk Sudduth](https://www.linkedin.com/in/kirksudduth/)'s Front-End Capstone for [Nashville Software School: Cohort 40](https://github.com/nss-cohort-40)
+`[Kirk Sudduth](https://www.linkedin.com/in/kirksudduth/)'s Front-End Capstone for [Nashville Software School: Cohort 40](https://github.com/nss-cohort-40)
 
 ## Proposal
 
-People on Earth want to see what Mars looks like. The Curiosity Mars rover is taking pictures for the world to see. Users can login to Curiositan and search for pictures by date and camera used. Users can add and delete photos as well as edit comments they have made on photos.
+People on Earth want to see what Mars looks like. The Curiosity Mars rover is taking pictures for the world to see. Users can login to Curiositan and search for pictures by date and camera used. Users can add and delete photos as well as edit comments they have made on photos.`
 
 ## Project Definition
 

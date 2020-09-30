@@ -1,7 +1,3 @@
-button {
-  background-color: purple;
-}
-
 .active {
   background-color: "#fc684a";
 }
@@ -9,4 +5,17 @@ button {
 .header_text {
   max-width: 175px;
   align-self: center;
+}
+
+.ui.curiositan_segment {
+  background-color: #ddbea6;
+}
+
+.ui.curiositan_header {
+  color: white;
+}
+
+.ui.curiositan_image {
+  width: 150px !important;
+  height: 80px !important;
 }
