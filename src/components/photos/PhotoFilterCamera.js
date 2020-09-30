@@ -80,7 +80,7 @@ const PhotoFilterCamera = (props) => {
             options={cameraOptions}
             placeholder="Select Camera"
             onClose={(event) => {
-              event.persist();
+              // event.persist();
               const camera = event.nativeEvent.path[1].id;
               showFilteredPhotos(camera);
             }}

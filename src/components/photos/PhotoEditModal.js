@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Modal,
   Icon,
@@ -9,6 +9,7 @@ import {
   Button,
 } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
+import "../Curiosity.css";
 
 const PhotoEditModal = (props) => {
   const photo = props.photo;

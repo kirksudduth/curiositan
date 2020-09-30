@@ -10,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 import { withRouter } from "react-router-dom";
+import "../Curiosity.css";
 
 const NewUser = (props) => {
   const [credentials, setCredentials] = useState({});
@@ -30,27 +31,33 @@ const NewUser = (props) => {
   };
 
   const handleNewUserLogin = () => {
-    DataManager.addNewUser(newUser);
-    DataManager.getUserByEmail(newUser.email).then((user) => {
-      const stateToChange = { ...credentials };
-      stateToChange.id = user[0].id;
-      stateToChange.username = user[0].username;
-      setCredentials(stateToChange.id);
-      setUser(stateToChange);
-      props.history.push("/photos_search");
-    });
+    if (
+      newUser.email === newUser.confirmEmail &&
+      newUser.password === newUser.confirmPassword
+    ) {
+      DataManager.addNewUser(newUser);
+      DataManager.getUserByEmail(newUser.email).then((user) => {
+        const stateToChange = { ...credentials };
+        stateToChange.id = user[0].id;
+        stateToChange.username = user[0].username;
+        setCredentials(stateToChange.id);
+        setUser(stateToChange);
+        props.history.push("/photos_search");
+      });
+    } else {
+      window.alert("Email or password do not match");
+    }
   };
 
   return (
     <>
-      <Segment style={{ background: "#DDBEA6" }} clearing>
-        <Header floated="left" as="h1" style={{ color: "white" }}>
+      <Segment className="segment" clearing>
+        <Header floated="left" as="h1" className="curiositan_header">
           <Image
             src={require("../images/curiositySelfie.png")}
             alt="Curiositan"
-            style={{ width: 150, height: 80 }}
+            className="curiositan_image"
             rounded
-            // circular
           />
           C U R I O S I T A N
         </Header>
