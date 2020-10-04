@@ -18,25 +18,6 @@ const NavBar = (props) => {
 
   return (
     <>
-      <Segment className="curiositan_segment" clearing>
-        <Header floated="left" as="h1" className="curiositan_header">
-          <Image
-            src={require("../images/curiositySelfie.png")}
-            alt="Curiositan"
-            className="curiositan_image"
-            rounded
-          />
-          C U R I O S I T A N
-        </Header>
-        {user ? (
-          <Header as="h1" floated="right">
-            <Label as="a" color="brown" size="large">
-              <Icon name="user circle" />
-              {user.username}
-            </Label>
-          </Header>
-        ) : null}
-      </Segment>
       <Menu color="brown" secondary pointing icon="labeled">
         <NavLink to="/photos_search">
           <Menu.Item
