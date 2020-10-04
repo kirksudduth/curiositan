@@ -5,6 +5,7 @@ import ApplicationViews from "./ApplicationViews";
 import NavBar from "./NavBar";
 import Login from "./Login";
 import NewUser from "./NewUser";
+import { Segment, Header, Image } from "semantic-ui-react";
 
 const Curiosity = (props) => {
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;

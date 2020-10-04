@@ -9,6 +9,8 @@ import {
   Checkbox,
   Button,
   Image,
+  Label,
+  Icon,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 
@@ -52,14 +54,19 @@ const Login = (props) => {
           <Image
             src={require("../images/curiositySelfie.png")}
             alt="Curiositan"
-            style={{ height: "80", width: "150" }}
-            // width="150"
-            // height="80"
             className="curiositan_image"
             rounded
           />
           C U R I O S I T A N
         </Header>
+        {user ? (
+          <Header as="h1" floated="right">
+            <Label as="a" color="brown" size="large">
+              <Icon name="user circle" />
+              {user.username}
+            </Label>
+          </Header>
+        ) : null}
       </Segment>
       <Grid centered columns={2}>
         <Grid.Column>
