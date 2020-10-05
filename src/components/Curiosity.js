@@ -5,6 +5,7 @@ import ApplicationViews from "./ApplicationViews";
 import NavBar from "./NavBar";
 import Login from "./Login";
 import NewUser from "./NewUser";
+import SegmentMod from "./Segment";
 
 const Curiosity = (props) => {
   const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -23,6 +24,7 @@ const Curiosity = (props) => {
   };
   return (
     <>
+      <SegmentMod {...props} />
       {hasUser ? (
         <>
           <NavBar {...props} clearUser={clearUser} />

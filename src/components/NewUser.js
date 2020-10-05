@@ -51,17 +51,6 @@ const NewUser = (props) => {
 
   return (
     <>
-      <Segment className="segment" clearing>
-        <Header floated="left" as="h1" className="curiositan_header">
-          <Image
-            src={require("../images/curiositySelfie.png")}
-            alt="Curiositan"
-            className="curiositan_image"
-            rounded
-          />
-          C U R I O S I T A N
-        </Header>
-      </Segment>
       <Grid centered columns={2}>
         <Grid.Column>
           <Header content="New User Form" as="h2" textAlign="center" />

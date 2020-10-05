@@ -8,7 +8,6 @@ import {
   Message,
   Checkbox,
   Button,
-  Image,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 
@@ -47,20 +46,6 @@ const Login = (props) => {
   };
   return (
     <>
-      <Segment className="curiositan_segment" clearing>
-        <Header floated="left" as="h1" className="curiositan_header">
-          <Image
-            src={require("../images/curiositySelfie.png")}
-            alt="Curiositan"
-            style={{ height: "80", width: "150" }}
-            // width="150"
-            // height="80"
-            className="curiositan_image"
-            rounded
-          />
-          C U R I O S I T A N
-        </Header>
-      </Segment>
       <Grid centered columns={2}>
         <Grid.Column>
           <Header content="Login" as="h2" textAlign="center" />
