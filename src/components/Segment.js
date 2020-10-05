@@ -4,7 +4,6 @@ import { Segment, Header, Label, Icon, Image } from "semantic-ui-react";
 const SegmentMod = (props) => {
   if (sessionStorage.credentials) {
     let credentials = JSON.parse(sessionStorage.credentials);
-    console.log(credentials);
     return (
       <Segment className="curiositan_segment" clearing>
         <Header floated="left" as="h1" className="curiositan_header">
