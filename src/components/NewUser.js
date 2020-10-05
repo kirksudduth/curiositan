@@ -6,7 +6,6 @@ import {
   Form,
   Checkbox,
   Button,
-  Image,
 } from "semantic-ui-react";
 import DataManager from "../modules/DataManager";
 import { withRouter } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Header, Icon, Segment, Label, Image } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import { withRouter, NavLink } from "react-router-dom";
 import "../Curiosity.css";
 
@@ -13,8 +13,6 @@ const NavBar = (props) => {
     stateToChange.name = evt.target.classList[0];
     setActiveItem(stateToChange);
   };
-
-  const user = JSON.parse(sessionStorage.credentials);
 
   return (
     <>
