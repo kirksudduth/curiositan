@@ -63,9 +63,6 @@ const PhotoFilterCamera = (props) => {
     filterByCamera();
   }, [cameraFilterPics]);
 
-  //   useEffect(() => {
-  //     showFilteredPhotos();
-  //   }, [cameraFilterPics]);
 
   return (
     <>
@@ -80,7 +77,6 @@ const PhotoFilterCamera = (props) => {
             options={cameraOptions}
             placeholder="Select Camera"
             onClose={(event) => {
-              // event.persist();
               const camera = event.nativeEvent.path[1].id;
               showFilteredPhotos(camera);
             }}

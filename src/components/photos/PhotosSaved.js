@@ -147,10 +147,6 @@ const PhotosSaved = () => {
             Deleted!
           </Button.Content>
         </Button>
-        {/* <Button id="keep" onClick={() => handleDeleteClose()}>
-          <Icon name="archive" />
-          Keep
-        </Button> */}
       </Modal.Actions>
     </Modal>
   );

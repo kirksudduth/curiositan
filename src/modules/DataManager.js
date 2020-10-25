@@ -31,6 +31,11 @@ export default {
       result.json()
     );
   },
+  getCuriositans() {
+    return fetch(
+      `${localURL}/users`)
+      .then((result) => result.json());
+  },
   addNewUser(user) {
     return fetch(`${localURL}/users`, {
       method: "POST",
