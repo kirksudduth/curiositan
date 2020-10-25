@@ -19,3 +19,8 @@
   width: 150px !important;
   height: 80px !important;
 }
+
+.ui.curiositan_card {
+  margin: 10, 5, 5, 10;
+  padding: 2;
+}
