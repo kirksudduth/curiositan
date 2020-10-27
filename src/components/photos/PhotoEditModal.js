@@ -13,7 +13,6 @@ import "../Curiosity.css";
 
 const PhotoEditModal = (props) => {
   const photo = props.photo;
-  //   const handleClose = () => setModalOpen(false);
   const [editedPhoto, setEditedPhoto] = useState({
     comment: "",
     url: "",
@@ -44,11 +43,7 @@ const PhotoEditModal = (props) => {
   };
   return (
     <>
-      <Modal
-      // trigger={<Icon id={obj.id} name="edit outline" onClick={handleOpen} />}
-      // open={modalOpen}
-      // onClose={handleClose}
-      >
+      <Modal>
         <Header content="Change how you remember this." />
         <Modal.Content>
           <Image size="large" src={photo.url} />
