@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Card, Grid, Header } from "semantic-ui-react";
 import DataManager from "../../modules/DataManager";
+import Autocomplete from './Autocomplete'
 
 const Curiositans = (props) => {
   const getCuriositans = DataManager.getCuriositans;
@@ -18,6 +19,7 @@ const Curiositans = (props) => {
       <Header textAlign="center">
         Find a fellow Curiositan!
       </Header>
+      <Autocomplete options={curiositans}/>
       {curiositans.reverse().map((user) => (
         <Grid.Column key={user.id}>
           <Card
