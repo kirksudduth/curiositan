@@ -19,18 +19,7 @@ const Curiositans = (props) => {
       <Header textAlign="center">
         Find a fellow Curiositan!
       </Header>
-      <Autocomplete options={curiositans}/>
-      {curiositans.reverse().map((user) => (
-        <Grid.Column key={user.id}>
-          <Card
-          fluid
-          raised
-          key={user.id}
-          className="curiositan_card">
-            <Card.Description>{user.username}</Card.Description>
-          </Card>
-        </Grid.Column>
-      ))}
+      <Autocomplete curiositans={curiositans}/>
     </>
   );
 };
