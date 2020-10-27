@@ -1,13 +1,11 @@
 import React from 'react';
+import { Input } from 'semantic-ui-react'
 
 const Autocomplete = (props) => {
-
+    
     return(
         <>
-            <div className="search">
-                <input type="text" className="search-box"/>
-                <input type="submit" value="" className="search-btn"/>
-            </div>
+            <Input icon="users" iconPosition="left" placeholder="Search Curiositans..."/>
         </>
     )
 }
