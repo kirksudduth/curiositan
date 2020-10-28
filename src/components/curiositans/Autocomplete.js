@@ -23,7 +23,7 @@ const Autocomplete = (props) => {
                 <div>
                     {curiositans.filter(({username}) => username.indexOf(searchInput.toLowerCase()) > -1).map((c, i) => {
                         return (
-                            <div onCLick={() => setCuriositan(c.username)} className="option" key={i}>
+                            <div onClick={() => setCuriositan(c.username)} className="option" key={i}>
                             <span>{c.username}</span>
                             </div>
                         )
