@@ -6,12 +6,12 @@ const Autocomplete = (props) => {
     // utilize useState() to get the input of the search bar to search
     // Curiositans.
     const [searchInput, setSearchInput] = useState("")
+    
+    //  THANK YOU LESSON ON CODING!!
+    // https://www.youtube.com/watch?v=vXO5JMiKtM8
+    // not completely there yet but definitely helped
+    // a TON
     const [display, setDisplay] = useState(false)
-    const handleFieldChange = (evt) => {
-        const stateToChange = searchInput
-        stateToChange = evt.target.value;
-        setSearchInput(stateToChange);
-    }
     const setCuriositan = curiositan => {
         setSearchInput(curiositan);
         setDisplay(false);
