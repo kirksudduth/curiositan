@@ -24,3 +24,10 @@
   margin: 10, 5, 5, 10;
   padding: 2;
 }
+
+.autoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
