@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Input } from 'semantic-ui-react'
 
 const Autocomplete = (props) => {
@@ -16,9 +16,14 @@ const Autocomplete = (props) => {
         setSearchInput(curiositan);
         setDisplay(false);
     }
+
+    const searchCuriositan = event => {
+        setSearchInput(event.target.value)
+    }
+    console.table("Curiositans:", curiositans)
     return(
         <>
-            <Input value={searchInput} type="text" icon="users" iconPosition="left" placeholder="Search Curiositans..." onChange={(event) => setSearchInput(event.target.value)} onClick={() => setDisplay(!display)} />
+            <Input value={searchInput} type="text" icon="users" iconPosition="left" placeholder="Search Curiositans..." onChange={(event) => searchCuriositan(event)} onClick={() => setDisplay(!display)} />
             {display && (
                 <div>
                     {curiositans.filter(({username}) => username.indexOf(searchInput.toLowerCase()) > -1).map((c, i) => {
