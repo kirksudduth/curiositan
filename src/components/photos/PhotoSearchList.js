@@ -24,9 +24,6 @@ const PhotoSearchList = (props) => {
       <Grid
         className="search_grid"
         verticalAlign="middle"
-        // style={{
-        //   background: "#957e6e",
-        // }}
       >
         <Grid.Row>
           <PhotoSearchForm

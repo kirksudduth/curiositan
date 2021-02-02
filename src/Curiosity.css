@@ -35,3 +35,8 @@
 .ui.search_grid {
   background: #957e6e;
 }
+
+.ui.modal_input,
+.ui.modal_button {
+  margin-bottom: 10px;
+}
