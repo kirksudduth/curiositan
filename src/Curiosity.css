@@ -31,3 +31,7 @@
   align-items: center;
   flex-direction: column;
 }
+
+.ui.search_grid {
+  background: #957e6e;
+}
