@@ -67,7 +67,7 @@ const PhotoFilterCamera = (props) => {
   return (
     <>
       <Grid centered>
-        <Grid.Row style={{ marginTop: 20 }}>
+        <Grid.Row className="filter_grid_row">
           <Dropdown
             button
             className="icon"
