@@ -31,3 +31,16 @@
   align-items: center;
   flex-direction: column;
 }
+
+.ui.search_grid {
+  background: #957e6e;
+}
+
+.ui.modal_input,
+.ui.modal_button {
+  margin-bottom: 10px;
+}
+
+.ui.filter_grid_row {
+  margin-top: 20px;
+}

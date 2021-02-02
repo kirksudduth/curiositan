@@ -57,7 +57,7 @@ const PhotoEditModal = (props) => {
               onChange={handleFieldChange}
               defaultValue={photo.comment}
               type="text area"
-              style={{ marginBottom: 10 }}
+              className="modal_input"
             />
             {
               <Button
@@ -65,16 +65,14 @@ const PhotoEditModal = (props) => {
                 onClick={() => {
                   editedCommentPhoto(photo);
                   getSavedPhotos(userId);
-                  //   handleClose();
                 }}
                 content="Save Photo"
-                style={{ marginBottom: 10 }}
+                className="modal_button"
               />
             }
           </Form>
         </Modal.Actions>
       </Modal>
-      {/* <Icon id={obj.id} onClick={() => handleOpen} name="edit outline" /> */}
     </>
   );
 };
