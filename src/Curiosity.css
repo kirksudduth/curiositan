@@ -21,8 +21,8 @@
 }
 
 .ui.curiositan_card {
-  margin: 10, 5, 5, 10;
-  padding: 2;
+  margin: 10px 5px 10px 5px !important;
+  padding: 2px;
 }
 
 .autoContainer {
@@ -41,6 +41,6 @@
   margin-bottom: 10px;
 }
 
-.ui.filter_grid_row {
-  margin-top: 20px;
+.ui.icon {
+  margin-top: 15px;
 }
