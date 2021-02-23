@@ -20,6 +20,10 @@
   height: 80px !important;
 }
 
+.ui.curiositan_card > .content {
+  background-color: #fc684a;
+}
+
 .ui.curiositan_card {
   margin: 10px 5px 10px 5px !important;
   padding: 2px;

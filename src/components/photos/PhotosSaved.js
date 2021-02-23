@@ -218,7 +218,9 @@ const PhotosSaved = () => {
                         >
                           {deleteModal(photo)}
                         </Card.Description>
-                        <Card.Content style={{ background: "#fc684a" }}>
+                        <Card.Content className="card_content" 
+                        // style={{ background: "#fc684a" }}
+                        >
                           <Image
                             rounded
                             size="small"
