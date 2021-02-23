@@ -211,14 +211,10 @@ const PhotosSaved = () => {
                         raised
                         key={photo.id}
                       >
-                        <Card.Description
-                          style={{
-                            background: "#DDBEA6",
-                          }}
-                        >
+                        <Card.Description>
                           {deleteModal(photo)}
                         </Card.Description>
-                        <Card.Content style={{ background: "#fc684a" }}>
+                        <Card.Content>
                           <Image
                             rounded
                             size="small"
@@ -233,12 +229,7 @@ const PhotosSaved = () => {
                           </Card.Meta>
                           <Card.Content>Comment: {photo.comment} </Card.Content>
                         </Card.Content>
-                        <Card.Content
-                          style={{
-                            background: "#DDBEA6",
-                          }}
-                          extra
-                        >
+                        <Card.Content extra>
                           {editModal(photo)}
                         </Card.Content>
                       </Card>
