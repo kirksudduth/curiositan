@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Input, Button, Container } from 'semantic-ui-react'
+import { Input, Button, Container, Grid, Card, Image } from 'semantic-ui-react'
 import DataManager from "../../modules/DataManager";
 
 const Autocomplete = (props) => {
@@ -65,7 +65,6 @@ const Autocomplete = (props) => {
         debugger;
         getUserPhotos(curiositanId).then(result => setOtherCuriositanPhotos(result.photos))
     }, [curiositanId])
-    console.log("PHOTOS: ", otherCuriositanPhotos)
 
     return(
         <>
@@ -87,15 +86,40 @@ const Autocomplete = (props) => {
             )}
             </form>
             <Container>
-            <Button onClick={() => console.log(getUserPhotos(curiositanId))}>Click Me</Button>
+            <Button onClick={() => console.log(otherCuriositanPhotos)}>Click Me</Button>
             </Container>
             </div>
-            {otherCuriositanPhotos !== [] ?
-            <Container>
-                 
-            </Container>
-            : null
-            }
+            <Grid centered attached="bottom" columns={2} verticalAlign="middle">
+            <Grid.Row centered columns={4}>
+            {otherCuriositanPhotos ?
+               otherCuriositanPhotos.reverse().map((photo) => (
+                    <Grid.Column key={photo.id}>
+                      <Card
+                        className="curiositan_card"
+                        raised
+                        key={photo.id}
+                      >
+                        <Card.Content>
+                          <Image
+                            rounded
+                            size="small"
+                            floated="right"
+                            src={photo.url}
+                          />
+                          <Card.Meta>
+                            <h4>{photo.camera}</h4>
+                          </Card.Meta>
+                          <Card.Meta>
+                            <h4>{photo.date}</h4>
+                          </Card.Meta>
+                          <Card.Content>Comment: {photo.comment} </Card.Content>
+                        </Card.Content>
+                      </Card>
+                    </Grid.Column>
+                  ))
+                : null}
+            </Grid.Row>
+            </Grid>
         </>
     )
 }
