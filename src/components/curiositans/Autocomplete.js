@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Input } from 'semantic-ui-react'
+import { Input, Button, Container } from 'semantic-ui-react'
+import DataManager from "../../modules/DataManager";
 
 const Autocomplete = (props) => {
     const curiositans = props.curiositans;
+    const getUserPhotos = DataManager.getUserWithSavedPhotos
+    const [otherCuriositanPhotos, setOtherCuriositanPhotos] = useState([])
 
     // utilize useState() to get the input of the search bar to search
     // Curiositans.
@@ -58,6 +61,12 @@ const Autocomplete = (props) => {
             setDisplay(false) 
     }
 
+    useEffect(() => {
+        debugger;
+        getUserPhotos(curiositanId).then(result => setOtherCuriositanPhotos(result.photos))
+    }, [curiositanId])
+    console.log("PHOTOS: ", otherCuriositanPhotos)
+
     return(
         <>
         <div ref={wrapperRef} className="autoContainer">
@@ -77,7 +86,16 @@ const Autocomplete = (props) => {
                 </div>
             )}
             </form>
+            <Container>
+            <Button onClick={() => console.log(getUserPhotos(curiositanId))}>Click Me</Button>
+            </Container>
             </div>
+            {otherCuriositanPhotos !== [] ?
+            <Container>
+                 
+            </Container>
+            : null
+            }
         </>
     )
 }
